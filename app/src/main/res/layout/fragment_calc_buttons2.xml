@@ -1,14 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FragmentCalcButtons2">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="tab 2" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnSqR"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="\u221A"
+        app:layout_constraintTop_toBottomOf="@id/btnTan"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guideline1" />
+
+    <Button
+        android:id="@+id/btnTan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="TAN"
+        app:layout_constraintTop_toBottomOf="@id/btnCos"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guideline1" />
+
+    <Button
+        android:id="@+id/btnCos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="COS"
+        app:layout_constraintTop_toBottomOf="@id/btnSin"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guideline1" />
+
+    <Button
+        android:id="@+id/btnSin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="SIN"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guideline1" />
+
+    <Button
+        android:id="@+id/btnPer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="\u0025"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline3"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btnENG"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="ENG"
+        app:layout_constraintTop_toBottomOf="@id/btnRCL"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline3"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btnRCL"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="RCL"
+        app:layout_constraintTop_toBottomOf="@id/btnPer"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline3"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btnNCR"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="nCr"
+        app:layout_constraintTop_toBottomOf="@id/btnENG"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline3"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btnA2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="a2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline2"
+        app:layout_constraintRight_toRightOf="@id/guideline3" />
+
+    <Button
+        android:id="@+id/btnOBrac"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="("
+        app:layout_constraintTop_toBottomOf="@id/btnAX"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline2"
+        app:layout_constraintRight_toRightOf="@id/guideline3" />
+
+    <Button
+        android:id="@+id/btnAX"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="aX"
+        app:layout_constraintTop_toBottomOf="@id/btnA2"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline2"
+        app:layout_constraintRight_toRightOf="@id/guideline3" />
+
+    <Button
+        android:id="@+id/btnCBrac"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=")"
+        app:layout_constraintTop_toBottomOf="@id/btnOBrac"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline2"
+        app:layout_constraintRight_toRightOf="@id/guideline3" />
+
+    <Button
+        android:id="@+id/btnSinM1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="SIN-1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1"
+        app:layout_constraintRight_toRightOf="@id/guideline2" />
+
+    <Button
+        android:id="@+id/btnTanM1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="TAN-1"
+        app:layout_constraintTop_toBottomOf="@id/btnCosM1"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1"
+        app:layout_constraintRight_toRightOf="@id/guideline2" />
+
+    <Button
+        android:id="@+id/btnCosM1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="COS-1"
+        app:layout_constraintTop_toBottomOf="@id/btnSinM1"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1"
+        app:layout_constraintRight_toRightOf="@id/guideline2" />
+
+    <Button
+        android:id="@+id/btnPi"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="\u03C0"
+        app:layout_constraintTop_toBottomOf="@id/btnTanM1"
+        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1"
+        app:layout_constraintRight_toRightOf="@id/guideline2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintHeight_percent="0.22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintHeight_percent="0.22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        app:layout_constraintHeight_percent="0.22" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,8 +13,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn1"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/guideline1" />
 
@@ -23,8 +23,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="1"
-        app:layout_constraintBottom_toTopOf="@id/btn0"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn4"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/guideline1" />
 
@@ -33,8 +33,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="4"
-        app:layout_constraintBottom_toTopOf="@id/btn1"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn7"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/guideline1" />
 
@@ -43,8 +43,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="7"
-        app:layout_constraintBottom_toTopOf="@id/btn4"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/guideline1" />
 
@@ -53,8 +53,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="DEL"
-        app:layout_constraintBottom_toTopOf="@id/btnX"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="@id/guideline5" />
 
@@ -63,8 +63,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="+"
-        app:layout_constraintBottom_toTopOf="@id/btnAns"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btnX"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="@id/guideline5" />
 
@@ -73,8 +73,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="x"
-        app:layout_constraintBottom_toTopOf="@id/btnPlus"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btnDel"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="@id/guideline5" />
 
@@ -83,8 +83,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="ANS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btnPlus"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="@id/guideline5" />
 
@@ -93,8 +93,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="9"
-        app:layout_constraintBottom_toTopOf="@id/btn6"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
         app:layout_constraintRight_toRightOf="@id/guideline3" />
 
@@ -103,8 +103,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="3"
-        app:layout_constraintBottom_toTopOf="@id/btnX10X"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn6"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
         app:layout_constraintRight_toRightOf="@id/guideline3" />
 
@@ -113,8 +113,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="6"
-        app:layout_constraintBottom_toTopOf="@id/btn3"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn9"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
         app:layout_constraintRight_toRightOf="@id/guideline3" />
 
@@ -123,8 +123,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="x10x"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn3"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
         app:layout_constraintRight_toRightOf="@id/guideline3" />
 
@@ -133,8 +133,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="8"
-        app:layout_constraintBottom_toTopOf="@id/btn5"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toRightOf="@id/guideline2" />
 
@@ -143,8 +143,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="2"
-        app:layout_constraintBottom_toTopOf="@id/btnDot"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn5"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toRightOf="@id/guideline2" />
 
@@ -153,8 +153,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="5"
-        app:layout_constraintBottom_toTopOf="@id/btn2"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn8"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toRightOf="@id/guideline2" />
 
@@ -163,8 +163,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btn2"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toRightOf="@id/guideline2" />
 
@@ -174,7 +174,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.2"
-        app:layout_constraintHeight_percent="0.25" />
+        app:layout_constraintHeight_percent="0.22" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -182,7 +182,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.4"
-        app:layout_constraintHeight_percent="0.25" />
+        app:layout_constraintHeight_percent="0.22" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -190,15 +190,15 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="247dp"
-        app:layout_constraintHeight_percent="0.25" />
+        app:layout_constraintHeight_percent="0.22" />
 
     <Button
         android:id="@+id/btnEquals"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="="
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btnMinus"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -207,8 +207,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="-"
-        app:layout_constraintBottom_toTopOf="@id/btnEquals"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btnDiv"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -217,8 +217,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="÷"
-        app:layout_constraintBottom_toTopOf="@id/btnMinus"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/btnAc"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -227,8 +227,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="AC"
-        app:layout_constraintBottom_toTopOf="@id/btnDiv"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
         app:layout_constraintRight_toRightOf="parent" />
 
