@@ -26,7 +26,8 @@
         app:layout_constraintTop_toBottomOf="@id/btn4"
         app:layout_constraintHeight_percent="0.22"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guideline1" />
+        app:layout_constraintRight_toRightOf="@id/guideline1"
+        android:onClick="btn1Clicked"/>
 
     <Button
         android:id="@+id/btn4"

@@ -4,14 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentCalcButtons1.onMessageReadListener{
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    String newSum;
+    TextView currentSum;
+    TextView previousSum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +35,26 @@ public class MainActivity extends AppCompatActivity {
         vpAdapter.addFragment(new FragmentCalcButtons2(), "Func");
         vpAdapter.addFragment(new FragmentCalcButtons3(), "History");
         viewPager.setAdapter(vpAdapter);
+
+        //get outputs
+        currentSum = (TextView)findViewById(R.id.calcOutput1);
+        previousSum = (TextView)findViewById(R.id.calcOutput2);
+    }
+
+    public void UpdateSum(String newSum){
+        String currentSumContent = currentSum.getText().toString();
+        if (currentSumContent == "0"){currentSumContent="";}
+        currentSum.setText(currentSumContent + newSum);
+    }
+
+    @Override
+    public void onMessageRead(String value) {
+        String currentSumContent = currentSum.getText().toString();
+        currentSum.setText(currentSumContent + newSum);
+    }
+
+    public void btn1Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("1");
     }
 }
