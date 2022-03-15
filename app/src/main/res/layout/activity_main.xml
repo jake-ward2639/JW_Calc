@@ -16,10 +16,10 @@
             android:id="@+id/calcOutput"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:gravity="bottom|end"
             android:text="0"
-            android:textSize="32dp"
+            android:textSize="32sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -46,17 +46,17 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calc" />
+                android:text="@string/calc" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Func" />
+                android:text="@string/func" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="History" />
+                android:text="@string/history" />
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager.widget.ViewPager
