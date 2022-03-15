@@ -47,8 +47,151 @@ public class MainActivity extends AppCompatActivity{
         currentSum.setText(currentSumContent + newSum);
     }
 
+    public void btn0Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("1");
+    }
     public void btn1Clicked(View v){
         Log.d("CheckF","ButtonClicked");
         UpdateSum("1");
+    }
+    public void btn2Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("2");
+    }
+    public void btn3Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("3");
+    }
+    public void btn4Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("4");
+    }
+    public void btn5Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("5");
+    }
+    public void btn6Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("6");
+    }
+    public void btn7Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("7");
+    }
+    public void btn8Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("8");
+    }
+    public void btn9Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("9");
+    }
+    public void btnDotClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("1");
+    }
+    public void btnPlusClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("+");
+    }
+    public void btnMinusClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("-");
+    }
+    public void btnDivClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("\u00F7");
+    }
+    public void btnXClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnDelClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        String currentSumContent = currentSum.getText().toString();
+        StringBuffer sb= new StringBuffer(currentSumContent);
+        sb.deleteCharAt(sb.length()-1);
+        currentSum.setText(sb);
+    }
+    public void btnAcClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("1");
+    }
+    public void btnX10XClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("1");
+    }
+    public void btnAnsClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("1");
+    }
+    public void btnEqualsClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("1");
+    }
+    public void btnSinClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnCosClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnTanClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnSinM1Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnCosM1Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnTanM1Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnSqRClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnPiClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnA2Clicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnAXClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnOBracClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnCBracClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnPerClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnRCLClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnENGClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
+    }
+    public void btnNCRClicked(View v){
+        Log.d("CheckF","ButtonClicked");
+        UpdateSum("X");
     }
 }

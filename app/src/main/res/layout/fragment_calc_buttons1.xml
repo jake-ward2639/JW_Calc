@@ -14,9 +14,10 @@
         android:layout_height="0dp"
         android:text="@string/_0"
         app:layout_constraintTop_toBottomOf="@id/btn1"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guideline1" />
+        app:layout_constraintRight_toRightOf="@id/guideline1"
+        android:onClick="btn0Clicked"/>
 
     <Button
         android:id="@+id/btn1"
@@ -24,7 +25,7 @@
         android:layout_height="0dp"
         android:text="@string/_1"
         app:layout_constraintTop_toBottomOf="@id/btn4"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/guideline1"
         android:onClick="btn1Clicked"/>
@@ -35,9 +36,10 @@
         android:layout_height="0dp"
         android:text="@string/_4"
         app:layout_constraintTop_toBottomOf="@id/btn7"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guideline1" />
+        app:layout_constraintRight_toRightOf="@id/guideline1"
+        android:onClick="btn4Clicked"/>
 
     <Button
         android:id="@+id/btn7"
@@ -45,9 +47,10 @@
         android:layout_height="0dp"
         android:text="@string/_7"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guideline1" />
+        app:layout_constraintRight_toRightOf="@id/guideline1"
+        android:onClick="btn7Clicked"/>
 
     <Button
         android:id="@+id/btnDel"
@@ -55,9 +58,10 @@
         android:layout_height="0dp"
         android:text="@string/del"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
-        app:layout_constraintRight_toRightOf="@id/guideline5" />
+        app:layout_constraintRight_toRightOf="@id/guideline5"
+        android:onClick="btnDelClicked"/>
 
     <Button
         android:id="@+id/btnPlus"
@@ -65,9 +69,10 @@
         android:layout_height="0dp"
         android:text="@string/plus"
         app:layout_constraintTop_toBottomOf="@id/btnX"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
-        app:layout_constraintRight_toRightOf="@id/guideline5" />
+        app:layout_constraintRight_toRightOf="@id/guideline5"
+        android:onClick="btnPlusClicked"/>
 
     <Button
         android:id="@+id/btnX"
@@ -75,9 +80,10 @@
         android:layout_height="0dp"
         android:text="@string/x"
         app:layout_constraintTop_toBottomOf="@id/btnDel"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
-        app:layout_constraintRight_toRightOf="@id/guideline5" />
+        app:layout_constraintRight_toRightOf="@id/guideline5"
+        android:onClick="btnXClicked"/>
 
     <Button
         android:id="@+id/btnAns"
@@ -85,9 +91,10 @@
         android:layout_height="0dp"
         android:text="@string/ans"
         app:layout_constraintTop_toBottomOf="@id/btnPlus"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
-        app:layout_constraintRight_toRightOf="@id/guideline5" />
+        app:layout_constraintRight_toRightOf="@id/guideline5"
+        android:onClick="btnAnsClicked"/>
 
     <Button
         android:id="@+id/btn9"
@@ -95,9 +102,10 @@
         android:layout_height="0dp"
         android:text="@string/_9"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
-        app:layout_constraintRight_toRightOf="@id/guideline3" />
+        app:layout_constraintRight_toRightOf="@id/guideline3"
+        android:onClick="btn9Clicked"/>
 
     <Button
         android:id="@+id/btn3"
@@ -105,9 +113,10 @@
         android:layout_height="0dp"
         android:text="@string/_3"
         app:layout_constraintTop_toBottomOf="@id/btn6"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
-        app:layout_constraintRight_toRightOf="@id/guideline3" />
+        app:layout_constraintRight_toRightOf="@id/guideline3"
+        android:onClick="btn3Clicked"/>
 
     <Button
         android:id="@+id/btn6"
@@ -115,9 +124,10 @@
         android:layout_height="0dp"
         android:text="@string/_6"
         app:layout_constraintTop_toBottomOf="@id/btn9"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
-        app:layout_constraintRight_toRightOf="@id/guideline3" />
+        app:layout_constraintRight_toRightOf="@id/guideline3"
+        android:onClick="btn6Clicked"/>
 
     <Button
         android:id="@+id/btnX10X"
@@ -125,9 +135,10 @@
         android:layout_height="0dp"
         android:text="@string/x10x"
         app:layout_constraintTop_toBottomOf="@id/btn3"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline2"
-        app:layout_constraintRight_toRightOf="@id/guideline3" />
+        app:layout_constraintRight_toRightOf="@id/guideline3"
+        android:onClick="btnX10XClicked"/>
 
     <Button
         android:id="@+id/btn8"
@@ -135,9 +146,10 @@
         android:layout_height="0dp"
         android:text="@string/_8"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline2" />
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        android:onClick="btn8Clicked"/>
 
     <Button
         android:id="@+id/btn2"
@@ -145,9 +157,10 @@
         android:layout_height="0dp"
         android:text="@string/_2"
         app:layout_constraintTop_toBottomOf="@id/btn5"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline2" />
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        android:onClick="btn2Clicked"/>
 
     <Button
         android:id="@+id/btn5"
@@ -155,9 +168,10 @@
         android:layout_height="0dp"
         android:text="@string/_5"
         app:layout_constraintTop_toBottomOf="@id/btn8"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline2" />
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        android:onClick="btn5Clicked"/>
 
     <Button
         android:id="@+id/btnDot"
@@ -165,9 +179,10 @@
         android:layout_height="0dp"
         android:text="@string/dot"
         app:layout_constraintTop_toBottomOf="@id/btn2"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline2" />
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        android:onClick="btnDotClicked"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -175,7 +190,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.2"
-        app:layout_constraintHeight_percent="0.22" />
+        app:layout_constraintHeight_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -183,15 +198,15 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.4"
-        app:layout_constraintHeight_percent="0.22" />
+        app:layout_constraintHeight_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="247dp"
-        app:layout_constraintHeight_percent="0.22" />
+        app:layout_constraintGuide_percent="0.6"
+        app:layout_constraintHeight_percent="0.25" />
 
     <Button
         android:id="@+id/btnEquals"
@@ -199,9 +214,10 @@
         android:layout_height="0dp"
         android:text="@string/equals"
         app:layout_constraintTop_toBottomOf="@id/btnMinus"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="btnEqualsClicked"/>
 
     <Button
         android:id="@+id/btnMinus"
@@ -209,9 +225,10 @@
         android:layout_height="0dp"
         android:text="@string/minus"
         app:layout_constraintTop_toBottomOf="@id/btnDiv"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="btnMinusClicked"/>
 
     <Button
         android:id="@+id/btnDiv"
@@ -219,9 +236,10 @@
         android:layout_height="0dp"
         android:text="@string/divide"
         app:layout_constraintTop_toBottomOf="@id/btnAc"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="btnDivClicked"/>
 
     <Button
         android:id="@+id/btnAc"
@@ -229,9 +247,10 @@
         android:layout_height="0dp"
         android:text="@string/ac"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.22"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="btnAcClicked"/>
 
 
 
