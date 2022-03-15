@@ -11,12 +11,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class UnitConverterActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView = findViewById(R.id.calMenu);
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit_converter);
+
+        bottomNavigationView = findViewById(R.id.calMenu);
 
         bottomNavigationView.setSelectedItemId(R.id.ToUC);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

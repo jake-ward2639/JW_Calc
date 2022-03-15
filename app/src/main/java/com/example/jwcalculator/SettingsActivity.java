@@ -11,12 +11,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView = findViewById(R.id.calMenu);
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        bottomNavigationView = findViewById(R.id.calMenu);
 
         bottomNavigationView.setSelectedItemId(R.id.ToSettings);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

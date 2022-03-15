@@ -6,15 +6,14 @@
         android:title="Calculator"/>
     <item
         android:id="@+id/ToUC"
-        android:icon="@drawable/ic_baseline_calculate_24"
-        android:title="Unit Converter"
-        />
+        android:icon="@drawable/ic_baseline_compare_arrows_24"
+        android:title="Unit Converter" />
     <item
         android:id="@+id/ToCE"
-        android:icon="@drawable/ic_baseline_calculate_24"
+        android:icon="@drawable/ic_baseline_attach_money_24"
         android:title="Currency Exchange"/>
     <item
         android:id="@+id/ToSettings"
-        android:icon="@drawable/ic_baseline_calculate_24"
+        android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings"/>
 </menu>

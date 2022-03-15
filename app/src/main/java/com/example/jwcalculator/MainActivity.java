@@ -22,12 +22,14 @@ public class MainActivity extends AppCompatActivity{
     String newSum;
     TextView currentSum;
     TextView previousSum;
-    BottomNavigationView bottomNavigationView = findViewById(R.id.calMenu);
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bottomNavigationView = findViewById(R.id.calMenu);
 
         bottomNavigationView.setSelectedItemId(R.id.ToCalc);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

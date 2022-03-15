@@ -11,12 +11,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CurrencyExchangeActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView = findViewById(R.id.calMenu);
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency_exchange);
+
+        bottomNavigationView = findViewById(R.id.calMenu);
 
         bottomNavigationView.setSelectedItemId(R.id.ToCE);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

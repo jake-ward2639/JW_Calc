@@ -81,7 +81,8 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/calMenu"
-            android:layout_width="match_parent"
+            app:labelVisibilityMode="labeled"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
