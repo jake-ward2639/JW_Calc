@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity implements FragmentCalcButtons1.onMessageReadListener{
+public class MainActivity extends AppCompatActivity{
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -43,13 +43,7 @@ public class MainActivity extends AppCompatActivity implements FragmentCalcButto
 
     public void UpdateSum(String newSum){
         String currentSumContent = currentSum.getText().toString();
-        if (currentSumContent == "0"){currentSumContent="";}
-        currentSum.setText(currentSumContent + newSum);
-    }
-
-    @Override
-    public void onMessageRead(String value) {
-        String currentSumContent = currentSum.getText().toString();
+        if (currentSumContent.equals("0")){currentSumContent="";}
         currentSum.setText(currentSumContent + newSum);
     }
 
