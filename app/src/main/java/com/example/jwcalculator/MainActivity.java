@@ -1,5 +1,6 @@
 package com.example.jwcalculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -7,9 +8,11 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity{
@@ -19,11 +22,42 @@ public class MainActivity extends AppCompatActivity{
     String newSum;
     TextView currentSum;
     TextView previousSum;
+    BottomNavigationView bottomNavigationView = findViewById(R.id.calMenu);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bottomNavigationView.setSelectedItemId(R.id.ToCalc);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
+                switch (menuitem.getItemId()){
+                    case R.id.ToCalc:
+                        startActivity(new Intent(getApplicationContext()
+                                ,MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.ToUC:
+                        startActivity(new Intent(getApplicationContext()
+                                ,UnitConverterActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.ToCE:
+                        startActivity(new Intent(getApplicationContext()
+                        ,CurrencyExchangeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.ToSettings:
+                        startActivity(new Intent(getApplicationContext()
+                                ,SettingsActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         tabLayout = findViewById(R.id.calTabLayout);
         viewPager = findViewById(R.id.calcViewPager);
@@ -49,7 +83,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void btn0Clicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("1");
+        UpdateSum("0");
     }
     public void btn1Clicked(View v){
         Log.d("CheckF","ButtonClicked");

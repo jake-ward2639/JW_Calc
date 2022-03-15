@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ToCalc"
+        android:icon="@drawable/ic_baseline_calculate_24"
+        android:title="Calculator"/>
+    <item
+        android:id="@+id/ToUC"
+        android:icon="@drawable/ic_baseline_calculate_24"
+        android:title="Unit Converter"
+        />
+    <item
+        android:id="@+id/ToCE"
+        android:icon="@drawable/ic_baseline_calculate_24"
+        android:title="Currency Exchange"/>
+    <item
+        android:id="@+id/ToSettings"
+        android:icon="@drawable/ic_baseline_calculate_24"
+        android:title="Settings"/>
+</menu>
