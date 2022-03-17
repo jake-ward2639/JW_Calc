@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity{
     TextView interpretedSum;
     TextView previousSum;
     BottomNavigationView bottomNavigationView;
+    Boolean AXMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +74,30 @@ public class MainActivity extends AppCompatActivity{
         interpretedSum = (TextView)findViewById(R.id.calcOutput1);
         previousSum = (TextView)findViewById(R.id.calcOutput2);
         readableSum = "0";
+
+        AXMode = false;
     }
 
-    public void UpdateSum(String newSum){
+    public boolean UpdateSum(String newSum){
+        if (AXMode){
+            switch (newSum){
+                case "0": AXMode = false; deleteLastChar();UpdateSum("\u2070");break;
+                case "1": AXMode = false; deleteLastChar();UpdateSum("\u00B9");break;
+                case "2": AXMode = false; deleteLastChar();UpdateSum("\u00B2");break;
+                case "3": AXMode = false; deleteLastChar();UpdateSum("\u00B3");break;
+                case "4": AXMode = false; deleteLastChar();UpdateSum("\u2074");break;
+                case "5": AXMode = false; deleteLastChar();UpdateSum("\u2075");break;
+                case "6": AXMode = false; deleteLastChar();UpdateSum("\u2076");break;
+                case "7": AXMode = false; deleteLastChar();UpdateSum("\u2077");break;
+                case "8": AXMode = false; deleteLastChar();UpdateSum("\u2078");break;
+                case "9": AXMode = false; deleteLastChar();UpdateSum("\u2079");break;
+            }
+            return true;
+        }
         if (readableSum.equals("0")){readableSum="";}
         readableSum = readableSum + newSum;
         InterpretSum(readableSum);
+        return true;
     }
 
     public void InterpretSum(String readingSum){
@@ -86,13 +105,30 @@ public class MainActivity extends AppCompatActivity{
         for (int i = 0; i < readingSum.length(); i++){
             char currentChar = readingSum.charAt(i);
             switch (currentChar){
-                case 'S':readSum = readSum + "SIN";
-                case 'C':readSum = readSum + "COS";
-                case 'T':readSum = readSum + "TAN";
+                case 'S':readSum = readSum + "SIN";break;
+                case 'C':readSum = readSum + "COS";break;
+                case 'T':readSum = readSum + "TAN";break;
+                case 's':readSum = readSum + "SIN-1";break;
+                case 'c':readSum = readSum + "COS-1";break;
+                case 't':readSum = readSum + "TAN-1";break;
                 default: readSum = readSum + readingSum.charAt(i);
             }
         }
         interpretedSum.setText(readSum);
+    }
+
+    public boolean deleteLastChar(){
+        if(readableSum.equals("0")){
+            return true;
+        }
+        Log.d("CheckF","ButtonClicked");
+        StringBuffer sb= new StringBuffer(readableSum);
+        readableSum = String.valueOf(sb.deleteCharAt(sb.length()-1));
+        if(readableSum.equals("")){
+            readableSum = "0";
+        }
+        InterpretSum(readableSum);
+        return true;
     }
 
     public void btn0Clicked(View v){
@@ -155,18 +191,9 @@ public class MainActivity extends AppCompatActivity{
         Log.d("CheckF","ButtonClicked");
         UpdateSum("X");
     }
-    public boolean btnDelClicked(View v){
-        if(readableSum.equals("0")){
-            return true;
-        }
-        Log.d("CheckF","ButtonClicked");
-        StringBuffer sb= new StringBuffer(readableSum);
-        readableSum = String.valueOf(sb.deleteCharAt(sb.length()-1));
-        if(readableSum.equals("")){
-            readableSum = "0";
-        }
-        InterpretSum(readableSum);
-        return true;
+    public void btnDelClicked(View v){
+        deleteLastChar();
+        if(AXMode){AXMode=false;}
     }
     public void btnAcClicked(View v){
         readableSum = "0";
@@ -198,15 +225,15 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnSinM1Clicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("1");
+        UpdateSum("s");
     }
     public void btnCosM1Clicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("c");
     }
     public void btnTanM1Clicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("t");
     }
     public void btnSqRClicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -222,7 +249,8 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnAXClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("B");
+        UpdateSum("\u25AB");
+        AXMode = true;
     }
     public void btnOBracClicked(View v){
         Log.d("CheckF","ButtonClicked");
