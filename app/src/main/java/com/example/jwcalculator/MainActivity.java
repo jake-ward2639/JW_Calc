@@ -16,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity{
 
     private TabLayout tabLayout;
@@ -66,11 +68,13 @@ public class MainActivity extends AppCompatActivity{
         VPAdapter vpAdapter = new VPAdapter(this);
         viewPager.setAdapter(vpAdapter);
 
+        String[] tabTitles = {"Calc","Func","History"};
+
         new TabLayoutMediator(tabLayout, viewPager,
                 new TabLayoutMediator.TabConfigurationStrategy() {
                     @Override
                     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText("Tab " + (position + 1));
+                        tab.setText(tabTitles[position]);
                     }
                 }).attach();
 
@@ -97,8 +101,8 @@ public class MainActivity extends AppCompatActivity{
                 case "9": AXMode = false;deleteLastChar();UpdateSum("\u2079");UpdateSum("\u25AB");AXMode = true;break;
                 case "+": AXMode = false;deleteLastChar();UpdateSum("+");break;
                 case "-": AXMode = false;deleteLastChar();UpdateSum("-");break;
-                case "X": AXMode = false;deleteLastChar();UpdateSum("X");break;
-                case "\u00F7": AXMode = false;deleteLastChar();UpdateSum("\u00F7");break;
+                case "X": AXMode = false;deleteLastChar();UpdateSum("*");break;
+                case "\u00F7": AXMode = false;deleteLastChar();UpdateSum("\\");break;
             }
             return true;
         }
