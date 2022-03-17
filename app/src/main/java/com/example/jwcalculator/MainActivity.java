@@ -3,7 +3,7 @@ package com.example.jwcalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,12 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity{
 
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private ViewPager2 viewPager;
     String readableSum;
     TextView interpretedSum;
     TextView previousSum;
@@ -62,13 +63,16 @@ public class MainActivity extends AppCompatActivity{
         tabLayout = findViewById(R.id.calTabLayout);
         viewPager = findViewById(R.id.calcViewPager);
 
-        tabLayout.setupWithViewPager(viewPager);
-
-        VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        vpAdapter.addFragment(new FragmentCalcButtons1(), "Calc");
-        vpAdapter.addFragment(new FragmentCalcButtons2(), "Func");
-        vpAdapter.addFragment(new FragmentCalcButtons3(), "History");
+        VPAdapter vpAdapter = new VPAdapter(this);
         viewPager.setAdapter(vpAdapter);
+
+        new TabLayoutMediator(tabLayout, viewPager,
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override
+                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText("Tab " + (position + 1));
+                    }
+                }).attach();
 
         //get outputs
         interpretedSum = (TextView)findViewById(R.id.calcOutput1);
@@ -115,6 +119,8 @@ public class MainActivity extends AppCompatActivity{
                 case 's':readSum = readSum + "SIN-1";break;
                 case 'c':readSum = readSum + "COS-1";break;
                 case 't':readSum = readSum + "TAN-1";break;
+                case '\\':readSum = readSum + "\u00F7";break;
+                case '*':readSum = readSum + "x";break;
                 default: readSum = readSum + readingSum.charAt(i);
             }
         }
@@ -189,11 +195,11 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnDivClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("\u00F7");
+        UpdateSum("\\");
     }
     public void btnXClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("*");
     }
     public void btnDelClicked(View v){
         deleteLastChar();

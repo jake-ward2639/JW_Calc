@@ -1,42 +1,30 @@
 package com.example.jwcalculator;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import java.util.ArrayList;
+public class VPAdapter extends FragmentStateAdapter {
 
-public class VPAdapter extends FragmentPagerAdapter {
-
-    private final ArrayList<Fragment> fragmentAwayList = new ArrayList<>();
-    private final ArrayList<String> fragmentTitles = new ArrayList<>();
-
-
-    public VPAdapter(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
+    public VPAdapter(@NonNull FragmentActivity fragmentActivity)
+    {
+        super(fragmentActivity);
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
-        return fragmentAwayList.get(position);
-    }
+    public Fragment createFragment(int position) {
 
+        switch (position) {
+            case 0:
+                return  new FragmentCalcButtons1();
+            case 1:
+                return  new FragmentCalcButtons2();
+            default:
+                return  new FragmentCalcButtons3();
+        }
+    }
     @Override
-    public int getCount() {
-        return fragmentAwayList.size();
-    }
-
-    public void addFragment(Fragment fragment, String title){
-        fragmentAwayList.add(fragment);
-        fragmentTitles.add(title);
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return fragmentTitles.get(position);
-    }
+    public int getItemCount() {return 3; }
 }
