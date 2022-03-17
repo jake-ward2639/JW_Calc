@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity{
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    String newSum;
-    TextView currentSum;
+    String readableSum;
+    TextView interpretedSum;
     TextView previousSum;
     BottomNavigationView bottomNavigationView;
 
@@ -32,33 +32,30 @@ public class MainActivity extends AppCompatActivity{
         bottomNavigationView = findViewById(R.id.calMenu);
 
         bottomNavigationView.setSelectedItemId(R.id.ToCalc);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
-                switch (menuitem.getItemId()){
-                    case R.id.ToCalc:
-                        startActivity(new Intent(getApplicationContext()
-                                ,MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToUC:
-                        startActivity(new Intent(getApplicationContext()
-                                ,UnitConverterActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToCE:
-                        startActivity(new Intent(getApplicationContext()
-                        ,CurrencyExchangeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToSettings:
-                        startActivity(new Intent(getApplicationContext()
-                                ,SettingsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuitem -> {
+            switch (menuitem.getItemId()){
+                case R.id.ToCalc:
+                    startActivity(new Intent(getApplicationContext()
+                            ,MainActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToUC:
+                    startActivity(new Intent(getApplicationContext()
+                            ,UnitConverterActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToCE:
+                    startActivity(new Intent(getApplicationContext()
+                    ,CurrencyExchangeActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToSettings:
+                    startActivity(new Intent(getApplicationContext()
+                            ,SettingsActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
             }
+            return false;
         });
 
         tabLayout = findViewById(R.id.calTabLayout);
@@ -73,14 +70,29 @@ public class MainActivity extends AppCompatActivity{
         viewPager.setAdapter(vpAdapter);
 
         //get outputs
-        currentSum = (TextView)findViewById(R.id.calcOutput1);
+        interpretedSum = (TextView)findViewById(R.id.calcOutput1);
         previousSum = (TextView)findViewById(R.id.calcOutput2);
+        readableSum = "0";
     }
 
     public void UpdateSum(String newSum){
-        String currentSumContent = currentSum.getText().toString();
-        if (currentSumContent.equals("0")){currentSumContent="";}
-        currentSum.setText(currentSumContent + newSum);
+        if (readableSum.equals("0")){readableSum="";}
+        readableSum = readableSum + newSum;
+        InterpretSum(readableSum);
+    }
+
+    public void InterpretSum(String readingSum){
+        String readSum = "";
+        for (int i = 0; i < readingSum.length(); i++){
+            char currentChar = readingSum.charAt(i);
+            switch (currentChar){
+                case 'S':readSum = readSum + "SIN";
+                case 'C':readSum = readSum + "COS";
+                case 'T':readSum = readSum + "TAN";
+                default: readSum = readSum + readingSum.charAt(i);
+            }
+        }
+        interpretedSum.setText(readSum);
     }
 
     public void btn0Clicked(View v){
@@ -125,7 +137,7 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnDotClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("1");
+        UpdateSum(".");
     }
     public void btnPlusClicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -143,16 +155,22 @@ public class MainActivity extends AppCompatActivity{
         Log.d("CheckF","ButtonClicked");
         UpdateSum("X");
     }
-    public void btnDelClicked(View v){
+    public boolean btnDelClicked(View v){
+        if(readableSum.equals("0")){
+            return true;
+        }
         Log.d("CheckF","ButtonClicked");
-        String currentSumContent = currentSum.getText().toString();
-        StringBuffer sb= new StringBuffer(currentSumContent);
-        sb.deleteCharAt(sb.length()-1);
-        currentSum.setText(sb);
+        StringBuffer sb= new StringBuffer(readableSum);
+        readableSum = String.valueOf(sb.deleteCharAt(sb.length()-1));
+        if(readableSum.equals("")){
+            readableSum = "0";
+        }
+        InterpretSum(readableSum);
+        return true;
     }
     public void btnAcClicked(View v){
-        Log.d("CheckF","ButtonClicked");
-        UpdateSum("1");
+        readableSum = "0";
+        interpretedSum.setText(readableSum);
     }
     public void btnX10XClicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -168,19 +186,19 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnSinClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("S");
     }
     public void btnCosClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("C");
     }
     public void btnTanClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("T");
     }
     public void btnSinM1Clicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("1");
     }
     public void btnCosM1Clicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -192,31 +210,31 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnSqRClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("\u221a");
     }
     public void btnPiClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("\u03c0");
     }
     public void btnA2Clicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("\u00B2");
     }
     public void btnAXClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("B");
     }
     public void btnOBracClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("(");
     }
     public void btnCBracClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum(")");
     }
     public void btnPerClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("\u0025");
     }
     public void btnRCLClicked(View v){
         Log.d("CheckF","ButtonClicked");
