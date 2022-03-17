@@ -81,16 +81,20 @@ public class MainActivity extends AppCompatActivity{
     public boolean UpdateSum(String newSum){
         if (AXMode){
             switch (newSum){
-                case "0": AXMode = false; deleteLastChar();UpdateSum("\u2070");break;
-                case "1": AXMode = false; deleteLastChar();UpdateSum("\u00B9");break;
-                case "2": AXMode = false; deleteLastChar();UpdateSum("\u00B2");break;
-                case "3": AXMode = false; deleteLastChar();UpdateSum("\u00B3");break;
-                case "4": AXMode = false; deleteLastChar();UpdateSum("\u2074");break;
-                case "5": AXMode = false; deleteLastChar();UpdateSum("\u2075");break;
-                case "6": AXMode = false; deleteLastChar();UpdateSum("\u2076");break;
-                case "7": AXMode = false; deleteLastChar();UpdateSum("\u2077");break;
-                case "8": AXMode = false; deleteLastChar();UpdateSum("\u2078");break;
-                case "9": AXMode = false; deleteLastChar();UpdateSum("\u2079");break;
+                case "0": AXMode = false;deleteLastChar();UpdateSum("\u2070");UpdateSum("\u25AB");AXMode = true;break;
+                case "1": AXMode = false;deleteLastChar();UpdateSum("\u00B9");UpdateSum("\u25AB");AXMode = true;break;
+                case "2": AXMode = false;deleteLastChar();UpdateSum("\u00B2");UpdateSum("\u25AB");AXMode = true;break;
+                case "3": AXMode = false;deleteLastChar();UpdateSum("\u00B3");UpdateSum("\u25AB");AXMode = true;break;
+                case "4": AXMode = false;deleteLastChar();UpdateSum("\u2074");UpdateSum("\u25AB");AXMode = true;break;
+                case "5": AXMode = false;deleteLastChar();UpdateSum("\u2075");UpdateSum("\u25AB");AXMode = true;break;
+                case "6": AXMode = false;deleteLastChar();UpdateSum("\u2076");UpdateSum("\u25AB");AXMode = true;break;
+                case "7": AXMode = false;deleteLastChar();UpdateSum("\u2077");UpdateSum("\u25AB");AXMode = true;break;
+                case "8": AXMode = false;deleteLastChar();UpdateSum("\u2078");UpdateSum("\u25AB");AXMode = true;break;
+                case "9": AXMode = false;deleteLastChar();UpdateSum("\u2079");UpdateSum("\u25AB");AXMode = true;break;
+                case "+": AXMode = false;deleteLastChar();UpdateSum("+");break;
+                case "-": AXMode = false;deleteLastChar();UpdateSum("-");break;
+                case "X": AXMode = false;deleteLastChar();UpdateSum("X");break;
+                case "\u00F7": AXMode = false;deleteLastChar();UpdateSum("\u00F7");break;
             }
             return true;
         }
