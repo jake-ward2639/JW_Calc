@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity{
         bottomNavigationView = findViewById(R.id.calMenu);
 
         bottomNavigationView.setSelectedItemId(R.id.ToCalc);
-        bottomNavigationView.setOnNavigationItemSelectedListener(menuitem -> {
-            switch (menuitem.getItemId()){
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
                 case R.id.ToCalc:
                     startActivity(new Intent(getApplicationContext()
                             ,MainActivity.class));
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity{
                     return true;
                 case R.id.ToCE:
                     startActivity(new Intent(getApplicationContext()
-                    ,CurrencyExchangeActivity.class));
+                            ,CurrencyExchangeActivity.class));
                     overridePendingTransition(0,0);
                     return true;
                 case R.id.ToSettings:
@@ -71,16 +72,11 @@ public class MainActivity extends AppCompatActivity{
         String[] tabTitles = {"Calc","Func","History"};
 
         new TabLayoutMediator(tabLayout, viewPager,
-                new TabLayoutMediator.TabConfigurationStrategy() {
-                    @Override
-                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText(tabTitles[position]);
-                    }
-                }).attach();
+                (tab, position) -> tab.setText(tabTitles[position])).attach();
 
         //get outputs
-        interpretedSum = (TextView)findViewById(R.id.calcOutput1);
-        previousSum = (TextView)findViewById(R.id.calcOutput2);
+        interpretedSum = findViewById(R.id.calcOutput1);
+        previousSum = findViewById(R.id.calcOutput2);
         readableSum = "0";
 
         AXMode = false;
@@ -113,22 +109,30 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void InterpretSum(String readingSum){
-        String readSum = "";
+        StringBuilder readSum = new StringBuilder();
         for (int i = 0; i < readingSum.length(); i++){
             char currentChar = readingSum.charAt(i);
             switch (currentChar){
-                case 'S':readSum = readSum + "SIN";break;
-                case 'C':readSum = readSum + "COS";break;
-                case 'T':readSum = readSum + "TAN";break;
-                case 's':readSum = readSum + "SIN-1";break;
-                case 'c':readSum = readSum + "COS-1";break;
-                case 't':readSum = readSum + "TAN-1";break;
-                case '\\':readSum = readSum + "\u00F7";break;
-                case '*':readSum = readSum + "x";break;
-                default: readSum = readSum + readingSum.charAt(i);
+                case 'S':
+                    readSum.append("SIN");break;
+                case 'C':
+                    readSum.append("COS");break;
+                case 'T':
+                    readSum.append("TAN");break;
+                case 's':
+                    readSum.append("SIN-1");break;
+                case 'c':
+                    readSum.append("COS-1");break;
+                case 't':
+                    readSum.append("TAN-1");break;
+                case '\\':
+                    readSum.append("\u00F7");break;
+                case '*':
+                    readSum.append("x");break;
+                default: readSum.append(readingSum.charAt(i));
             }
         }
-        interpretedSum.setText(readSum);
+        interpretedSum.setText(readSum.toString());
     }
 
     public boolean deleteLastChar(){
