@@ -289,15 +289,15 @@ public class MainActivity extends AppCompatActivity{
         Log.d("CheckF","ButtonClicked");
         UpdateSum("\u0025");
     }
-    public void btnRCLClicked(View v){
+    public void btnInClicked(View v){
         Log.d("CheckF","ButtonClicked");
         UpdateSum("X");
     }
-    public void btnENGClicked(View v){
+    public void btnLogClicked(View v){
         Log.d("CheckF","ButtonClicked");
         UpdateSum("X");
     }
-    public void btnNCRClicked(View v){
+    public void btnEXPClicked(View v){
         Log.d("CheckF","ButtonClicked");
         UpdateSum("X");
     }
