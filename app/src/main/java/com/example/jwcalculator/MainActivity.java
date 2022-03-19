@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnAcClicked(View v){
         readableSum = "0";
+        previousSum.setText(readableSum);
         interpretedSum.setText(readableSum);
     }
     public void btnX10XClicked(View v){
@@ -221,7 +222,18 @@ public class MainActivity extends AppCompatActivity{
         UpdateSum("1");
     }
     public void btnEqualsClicked(View v){
-        String total = Double.toString(eval(readableSum));
+        String total;
+        try {
+            total = Double.toString(eval(readableSum));
+        } catch (Exception e) {
+            e.printStackTrace();
+            total = "Error";
+        }
+        if (total.endsWith(".0")){
+            total = total.substring(0,total.length()-2);
+        }
+        previousSum.setText(interpretedSum.getText());
+        readableSum=total;
         interpretedSum.setText(total);
     }
     public void btnSinClicked(View v){
@@ -295,13 +307,13 @@ public class MainActivity extends AppCompatActivity{
             String str = input;
 
             void nextChar() {
-                ch = (++pos < str.length()) ? str.charAt(pos) : -1;
+                ch = (++pos < str.length()) ? str.charAt(pos) : -1;//move onto next character until done
                 Log.d("CheckF", String.valueOf(ch));
             }
 
             boolean use(int charToUse) {
-                while (ch == ' ') nextChar();
-                if (ch == charToUse) {
+                while (ch == ' ') nextChar();//check if blank, if so move on
+                if (ch == charToUse) { //check if the same as parameter, if so move on otherwise return false
                     nextChar();
                     return true;
                 }
@@ -309,7 +321,7 @@ public class MainActivity extends AppCompatActivity{
             }
 
             double parse() {
-                for (int i = 0; i < str.length(); i++){ //check for pi
+                for (int i = 0; i < str.length(); i++){ //check for pi, if so replace with pi as number and operators
                     if (str.charAt(i) == '\u03c0'){
                         String constructPI = "3.141592654";
                         if (!(i == 0)){
@@ -324,46 +336,47 @@ public class MainActivity extends AppCompatActivity{
                         }
                         str = str.substring(0,i)+constructPI+str.substring(i+1,str.length());
                     }
+                    //add a check for percentage
                 }
 
-                nextChar();
-                double x = parseExpression();
+                nextChar();//start moving through sum
+                double x = parseExpression();//recursive calls start
                 if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
-                return x;
+                return x;//return total
             }
 
-            double parseExpression() {
+            double parseExpression() {//check if + or -
                 double x = parseTerm();
                 for (;;) {
-                    if      (use('+')) x += parseTerm(); // addition
-                    else if (use('-')) x -= parseTerm(); // subtraction
+                    if      (use('+')) x += parseTerm();
+                    else if (use('-')) x -= parseTerm();
                     else return x;
                 }
             }
 
-            double parseTerm() {
+            double parseTerm() {//check if times or divide
                 double x = parseFactor();
                 for (;;) {
-                    if      (use('*')) x *= parseFactor(); // multiplication
-                    else if (use('/')) x /= parseFactor(); // division
+                    if      (use('*')) x *= parseFactor();
+                    else if (use('/')) x /= parseFactor();
                     else return x;
                 }
             }
 
             double parseFactor() {
-                if (use('+')) return +parseFactor(); // unary plus
-                if (use('-')) return -parseFactor(); // unary minus
+                if (use('+')) return +parseFactor(); //Positive or negative
+                if (use('-')) return -parseFactor();
 
                 double x;
                 int startPos = this.pos;
-                if (use('(')) { // parentheses
+                if (use('(')) { // check for parentheses
                     x = parseExpression();
                     if (!use(')')) throw new RuntimeException("Missing ')'");
-                } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
+                } else if ((ch >= '0' && ch <= '9') || ch == '.') { // check if numbers
                     while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
                     x = Double.parseDouble(str.substring(startPos, this.pos));
                     if (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079') {//powers
-                        String powNum = "";
+                        String powNum = ""; //check if powers
                         while (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079'){
                             switch (ch){
                                 case '\u2070':powNum = powNum + "0";break;
@@ -385,9 +398,8 @@ public class MainActivity extends AppCompatActivity{
                         x = Math.pow(x, Double.parseDouble(powNum));
                         Log.d("CheckF", String.valueOf(x));
                     }
-                    //make pownum, while char is super, nextchar then x = x pow pownum
-                } else if ((ch >= 'a' && ch <= 'z') || ch == '\u221a' || (ch >= 'A' && ch <= 'Z')) { // functions
-                    while ((ch >= 'a' && ch <= 'z') || ch == '\u221a' || (ch >= 'A' && ch <= 'Z')) nextChar(); //could remove while but not next char
+                } else if ((ch >= 'a' && ch <= 'z') || ch == '\u221a' || (ch >= 'A' && ch <= 'Z')) { // check if function
+                    nextChar(); //base had a while loop to distinguish functions but im only using single characters
                     String function = str.substring(startPos, this.pos);
                     if (use('(')) {
                         x = parseExpression();

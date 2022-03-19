@@ -64,37 +64,37 @@
         android:onClick="btnPerClicked"/>
 
     <Button
-        android:id="@+id/btnENG"
+        android:id="@+id/btnLog"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/eng"
-        app:layout_constraintTop_toBottomOf="@id/btnRCL"
+        android:text="@string/Log"
+        app:layout_constraintTop_toBottomOf="@id/btnIn"
         app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="btnENGClicked"/>
+        android:onClick="btnLogClicked"/>
 
     <Button
-        android:id="@+id/btnRCL"
+        android:id="@+id/btnIn"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/rcl"
+        android:text="@string/In"
         app:layout_constraintTop_toBottomOf="@id/btnPer"
         app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="btnRCLClicked"/>
+        android:onClick="btnInClicked"/>
 
     <Button
-        android:id="@+id/btnNCR"
+        android:id="@+id/btnEXP"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/ncr"
-        app:layout_constraintTop_toBottomOf="@id/btnENG"
+        android:text="@string/EXP"
+        app:layout_constraintTop_toBottomOf="@id/btnLog"
         app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="btnNCRClicked"/>
+        android:onClick="btnEXPClicked"/>
 
     <Button
         android:id="@+id/btnA2"

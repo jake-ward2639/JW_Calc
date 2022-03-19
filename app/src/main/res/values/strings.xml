@@ -30,9 +30,9 @@
     <string name="cos">COS</string>
     <string name="sin">SIN</string>
     <string name="u0025">%</string>
-    <string name="eng">ENG</string>
-    <string name="rcl">RCL</string>
-    <string name="ncr">nCr</string>
+    <string name="Log">Log</string>
+    <string name="In">In</string>
+    <string name="EXP">EXP</string>
     <string name="a2">a2</string>
     <string name="Obrac">(</string>
     <string name="ax">aX</string>
