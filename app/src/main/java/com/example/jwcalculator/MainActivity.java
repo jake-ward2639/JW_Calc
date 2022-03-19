@@ -1,23 +1,17 @@
 package com.example.jwcalculator;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -98,7 +92,7 @@ public class MainActivity extends AppCompatActivity{
                 case "+": AXMode = false;deleteLastChar();UpdateSum("+");break;
                 case "-": AXMode = false;deleteLastChar();UpdateSum("-");break;
                 case "X": AXMode = false;deleteLastChar();UpdateSum("*");break;
-                case "\u00F7": AXMode = false;deleteLastChar();UpdateSum("\\");break;
+                case "\u00F7": AXMode = false;deleteLastChar();UpdateSum("/");break;
             }
             return true;
         }
@@ -125,12 +119,13 @@ public class MainActivity extends AppCompatActivity{
                     readSum.append("COS-1");break;
                 case 't':
                     readSum.append("TAN-1");break;
-                case '\\':
+                case '/':
                     readSum.append("\u00F7");break;
                 case '*':
                     readSum.append("x");break;
                 default: readSum.append(readingSum.charAt(i));
             }
+
         }
         interpretedSum.setText(readSum.toString());
     }
@@ -203,7 +198,7 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnDivClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("\\");
+        UpdateSum("/");
     }
     public void btnXClicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -226,8 +221,8 @@ public class MainActivity extends AppCompatActivity{
         UpdateSum("1");
     }
     public void btnEqualsClicked(View v){
-        Log.d("CheckF","ButtonClicked");
-        UpdateSum("1");
+        String total = Double.toString(eval(readableSum));
+        interpretedSum.setText(total);
     }
     public void btnSinClicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -293,5 +288,144 @@ public class MainActivity extends AppCompatActivity{
     public void btnNCRClicked(View v){
         Log.d("CheckF","ButtonClicked");
         UpdateSum("X");
+    }
+    public static double eval(final String input) {
+        return new Object() {
+            int pos = -1, ch;
+            String str = input;
+
+            void nextChar() {
+                ch = (++pos < str.length()) ? str.charAt(pos) : -1;
+                Log.d("CheckF", String.valueOf(ch));
+            }
+
+            boolean use(int charToUse) {
+                while (ch == ' ') nextChar();
+                if (ch == charToUse) {
+                    nextChar();
+                    return true;
+                }
+                return false;
+            }
+
+            double parse() {
+                for (int i = 0; i < str.length(); i++){ //check for pi
+                    if (str.charAt(i) == '\u03c0'){
+                        String constructPI = "3.141592654";
+                        if (!(i == 0)){
+                            if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || ch == '\u03c0'){
+                                constructPI = "*"+constructPI;
+                            }
+                        }
+                        if (!(i == str.length()-1)){
+                            if ((str.charAt(i + 1) >= '0' && str.charAt(i+1) <= '9') || ch == '\u03c0') {
+                                constructPI = constructPI+"*";
+                            }
+                        }
+                        str = str.substring(0,i)+constructPI+str.substring(i+1,str.length());
+                    }
+                }
+
+                nextChar();
+                double x = parseExpression();
+                if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
+                return x;
+            }
+
+            double parseExpression() {
+                double x = parseTerm();
+                for (;;) {
+                    if      (use('+')) x += parseTerm(); // addition
+                    else if (use('-')) x -= parseTerm(); // subtraction
+                    else return x;
+                }
+            }
+
+            double parseTerm() {
+                double x = parseFactor();
+                for (;;) {
+                    if      (use('*')) x *= parseFactor(); // multiplication
+                    else if (use('/')) x /= parseFactor(); // division
+                    else return x;
+                }
+            }
+
+            double parseFactor() {
+                if (use('+')) return +parseFactor(); // unary plus
+                if (use('-')) return -parseFactor(); // unary minus
+
+                double x;
+                int startPos = this.pos;
+                if (use('(')) { // parentheses
+                    x = parseExpression();
+                    if (!use(')')) throw new RuntimeException("Missing ')'");
+                } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
+                    while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
+                    x = Double.parseDouble(str.substring(startPos, this.pos));
+                    if (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079') {//powers
+                        String powNum = "";
+                        while (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079'){
+                            switch (ch){
+                                case '\u2070':powNum = powNum + "0";break;
+                                case '\u00B9':powNum = powNum + "1";break;
+                                case '\u00B2':powNum = powNum + "2";break;
+                                case '\u00B3':powNum = powNum + "3";break;
+                                case '\u2074':powNum = powNum + "4";break;
+                                case '\u2075':powNum = powNum + "5";break;
+                                case '\u2076':powNum = powNum + "6";break;
+                                case '\u2077':powNum = powNum + "7";break;
+                                case '\u2078':powNum = powNum + "8";break;
+                                case '\u2079':powNum = powNum + "9";break;
+                            }
+                            nextChar();
+                        }
+                        Log.d("CheckF", String.valueOf(x));
+                        Log.d("CheckF",powNum);
+                        Log.d("CheckF", String.valueOf(Double.parseDouble(powNum)));
+                        x = Math.pow(x, Double.parseDouble(powNum));
+                        Log.d("CheckF", String.valueOf(x));
+                    }
+                    //make pownum, while char is super, nextchar then x = x pow pownum
+                } else if ((ch >= 'a' && ch <= 'z') || ch == '\u221a' || (ch >= 'A' && ch <= 'Z')) { // functions
+                    while ((ch >= 'a' && ch <= 'z') || ch == '\u221a' || (ch >= 'A' && ch <= 'Z')) nextChar(); //could remove while but not next char
+                    String function = str.substring(startPos, this.pos);
+                    if (use('(')) {
+                        x = parseExpression();
+                        if (!use(')')) throw new RuntimeException("Missing ')' after argument to " + function);
+                    } else {
+                        x = parseFactor();
+                    }
+                    switch (function) {
+                        case "\u221a":
+                            x = Math.sqrt(x);
+                            break;
+                        case "S":
+                            x = Math.sin(Math.toRadians(x));
+                            break;
+                        case "C":
+                            x = Math.cos(Math.toRadians(x));
+                            break;
+                        case "T":
+                            x = Math.tan(Math.toRadians(x));
+                            break;
+                        case "s":
+                            x = Math.asin(Math.toRadians(x));
+                            break;
+                        case "c":
+                            x = Math.acos(Math.toRadians(x));
+                            break;
+                        case "t":
+                            x = Math.atan(Math.toRadians(x));
+                            break;
+                        default:
+                            throw new RuntimeException("Unknown function: " + function);
+                    }
+                } else {
+                    throw new RuntimeException("Unexpected: " + (char)ch);
+                }
+
+                return x;
+            }
+        }.parse();
     }
 }
