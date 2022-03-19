@@ -320,7 +320,7 @@ public class MainActivity extends AppCompatActivity{
                 return false;
             }
 
-            double parse() {
+            double parseSimplify() {
                 for (int i = 0; i < str.length(); i++){ //check for pi, if so replace with pi as number and operators
                     if (str.charAt(i) == '\u03c0'){
                         String constructPI = "3.141592654";
@@ -438,6 +438,6 @@ public class MainActivity extends AppCompatActivity{
 
                 return x;
             }
-        }.parse();
+        }.parseSimplify();
     }
 }
