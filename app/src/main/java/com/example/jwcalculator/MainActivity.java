@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity{
                                 constructPI = constructPI+"*";
                             }
                         }
-                        str = str.substring(0,i)+constructPI+str.substring(i+1,str.length());
+                        str = str.substring(0,i)+constructPI+str.substring(i+1);
                     }
                     if (str.charAt(i) == 'e'){
                         String constructE = "2.71828182846";
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity{
                                 constructE = constructE+"*";
                             }
                         }
-                        str = str.substring(0,i)+constructE+str.substring(i+1,str.length());
+                        str = str.substring(0,i)+constructE+str.substring(i+1);
                     }
                     //add a check for percentage and E
                 }
