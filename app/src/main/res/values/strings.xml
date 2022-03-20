@@ -13,7 +13,7 @@
     <string name="_9">9</string>
     <string name="_3">3</string>
     <string name="_6">6</string>
-    <string name="x10x">x10x</string>
+    <string name="e">e</string>
     <string name="_8">8</string>
     <string name="_5">5</string>
     <string name="_2">2</string>
@@ -31,7 +31,7 @@
     <string name="sin">SIN</string>
     <string name="u0025">%</string>
     <string name="Log">Log</string>
-    <string name="In">In</string>
+    <string name="Ln">ln</string>
     <string name="EXP">EXP</string>
     <string name="a2">a2</string>
     <string name="Obrac">(</string>

@@ -213,9 +213,9 @@ public class MainActivity extends AppCompatActivity{
         previousSum.setText(readableSum);
         interpretedSum.setText(readableSum);
     }
-    public void btnX10XClicked(View v){
+    public void btnEClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("1");
+        UpdateSum("e");
     }
     public void btnAnsClicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -289,17 +289,17 @@ public class MainActivity extends AppCompatActivity{
         Log.d("CheckF","ButtonClicked");
         UpdateSum("\u0025");
     }
-    public void btnInClicked(View v){
+    public void btnLnClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("l");
     }
     public void btnLogClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("L");
     }
     public void btnEXPClicked(View v){
         Log.d("CheckF","ButtonClicked");
-        UpdateSum("X");
+        UpdateSum("E");
     }
     public static double eval(final String input) {
         return new Object() {
@@ -336,7 +336,21 @@ public class MainActivity extends AppCompatActivity{
                         }
                         str = str.substring(0,i)+constructPI+str.substring(i+1,str.length());
                     }
-                    //add a check for percentage
+                    if (str.charAt(i) == 'e'){
+                        String constructE = "2.71828182846";
+                        if (!(i == 0)){
+                            if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || ch == 'e'){
+                                constructE = "*"+constructE;
+                            }
+                        }
+                        if (!(i == str.length()-1)){
+                            if ((str.charAt(i + 1) >= '0' && str.charAt(i+1) <= '9') || ch == 'e') {
+                                constructE = constructE+"*";
+                            }
+                        }
+                        str = str.substring(0,i)+constructE+str.substring(i+1,str.length());
+                    }
+                    //add a check for percentage and E
                 }
 
                 nextChar();//start moving through sum
@@ -428,6 +442,12 @@ public class MainActivity extends AppCompatActivity{
                             break;
                         case "t":
                             x = Math.atan(Math.toRadians(x));
+                            break;
+                        case "l":
+                            x = Math.log(x);
+                            break;
+                        case "L":
+                            x = Math.log10(x);
                             break;
                         default:
                             throw new RuntimeException("Unknown function: " + function);

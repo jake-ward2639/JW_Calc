@@ -68,22 +68,23 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/Log"
-        app:layout_constraintTop_toBottomOf="@id/btnIn"
+        app:layout_constraintTop_toBottomOf="@id/btnLn"
         app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="parent"
         android:onClick="btnLogClicked"/>
 
     <Button
-        android:id="@+id/btnIn"
+        android:id="@+id/btnLn"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/In"
+        android:text="@string/Ln"
+        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/btnPer"
         app:layout_constraintHeight_percent="0.25"
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="btnInClicked"/>
+        android:onClick="btnLnClicked"/>
 
     <Button
         android:id="@+id/btnEXP"
