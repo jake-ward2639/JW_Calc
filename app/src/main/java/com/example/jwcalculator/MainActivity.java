@@ -223,12 +223,12 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnEqualsClicked(View v){
         String total;
-        try {
+        //try {
             total = Double.toString(eval(readableSum));
-        } catch (Exception e) {
-            e.printStackTrace();
-            total = "Error";
-        }
+        //} catch (Exception e) {
+        //    e.printStackTrace();
+        //    total = "Error";
+        //}
         if (total.endsWith(".0")){
             total = total.substring(0,total.length()-2);
         }
@@ -325,12 +325,12 @@ public class MainActivity extends AppCompatActivity{
                     if (str.charAt(i) == '\u03c0'){
                         String constructPI = "3.141592654";
                         if (!(i == 0)){
-                            if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || ch == '\u03c0'){
+                            if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || str.charAt(i-1) == '\u03c0'){
                                 constructPI = "*"+constructPI;
                             }
                         }
                         if (!(i == str.length()-1)){
-                            if ((str.charAt(i + 1) >= '0' && str.charAt(i+1) <= '9') || ch == '\u03c0') {
+                            if ((str.charAt(i + 1) >= '0' && str.charAt(i+1) <= '9') || str.charAt(i+1) == '\u03c0') {
                                 constructPI = constructPI+"*";
                             }
                         }
@@ -339,16 +339,47 @@ public class MainActivity extends AppCompatActivity{
                     if (str.charAt(i) == 'e'){
                         String constructE = "2.71828182846";
                         if (!(i == 0)){
-                            if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || ch == 'e'){
+                            if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || str.charAt(i-1) == 'e'){
                                 constructE = "*"+constructE;
                             }
                         }
                         if (!(i == str.length()-1)){
-                            if ((str.charAt(i + 1) >= '0' && str.charAt(i+1) <= '9') || ch == 'e') {
+                            if ((str.charAt(i + 1) >= '0' && str.charAt(i+1) <= '9') || str.charAt(i+1) == 'e') {
                                 constructE = constructE+"*";
                             }
                         }
                         str = str.substring(0,i)+constructE+str.substring(i+1);
+                    }
+                    if (str.charAt(i) == 'E'){
+                        Log.d("CheckF","Recognised E");
+                        String constructEXP = "";
+                        String zeros = "";
+                        int tempI = i+1;
+                        int endI = i+1;
+                        while (!(tempI == str.length())){
+                            Log.d("CheckF","while not equal to length");
+                            if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9') || str.charAt(tempI) == '.') {
+                                constructEXP =  constructEXP + str.charAt(tempI);
+                                Log.d("CheckF","construct number" + constructEXP);
+                            } else {
+                                endI = tempI;
+                                tempI = str.length()-1;
+                            }
+                            tempI = tempI + 1;
+                        }
+                        int EXPNum = Integer.parseInt(constructEXP);
+                        Log.d("CheckF", String.valueOf(EXPNum));
+                        for (int b = 0; b < EXPNum; b++){
+                            zeros = zeros + "0";
+                            Log.d("CheckF","added a zero");
+                        }
+                        int tempI2 = i-1;
+                        while (!(tempI2 == -1)&&((str.charAt(tempI2) >= '0' && str.charAt(tempI2) <= '9') || str.charAt(tempI2) == '.')){
+                            tempI2 = tempI2 - 1;
+                        }
+                        if ((str.charAt(endI) >= '0' && str.charAt(endI) <= '9') || str.charAt(endI) == '.'){endI=endI+1;}
+                        str = str.substring(0,tempI2+1)+"("+str.substring(tempI2+1,i)+"*1"+zeros+")"+str.substring(endI);
+                        Log.d("CheckF",str);
                     }
                     //add a check for percentage and E
                 }
