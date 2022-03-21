@@ -223,12 +223,12 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnEqualsClicked(View v){
         String total;
-        //try {
+        try {
             total = Double.toString(eval(readableSum));
-        //} catch (Exception e) {
-        //    e.printStackTrace();
-        //    total = "Error";
-        //}
+        } catch (Exception e) {
+            e.printStackTrace();
+            total = "Error";
+        }
         if (total.endsWith(".0")){
             total = total.substring(0,total.length()-2);
         }
