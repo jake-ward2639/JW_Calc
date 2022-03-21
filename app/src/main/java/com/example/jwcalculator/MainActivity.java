@@ -358,9 +358,9 @@ public class MainActivity extends AppCompatActivity{
                             if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9') || str.charAt(tempI) == '.') {
                                 constructEXP =  constructEXP + str.charAt(tempI);
                                 Log.d("CheckF","construct number" + constructEXP);
+                                endI = endI +1;
                             } else {
-                                endI = tempI;
-                                tempI = str.length();
+                                endI = tempI;tempI = str.length();
                             }
                             tempI = tempI + 1;
                         }
@@ -374,7 +374,6 @@ public class MainActivity extends AppCompatActivity{
                         while (!(tempI2 == -1)&&((str.charAt(tempI2) >= '0' && str.charAt(tempI2) <= '9') || str.charAt(tempI2) == '.')){
                             tempI2 = tempI2 - 1;
                         }
-                        if ((str.charAt(endI) >= '0' && str.charAt(endI) <= '9') || str.charAt(endI) == '.'){endI=endI+1;}
                         str = str.substring(0,tempI2+1)+"("+str.substring(tempI2+1,i)+"*1"+zeros+")"+str.substring(endI);
                         Log.d("CheckF",str);
                     }
