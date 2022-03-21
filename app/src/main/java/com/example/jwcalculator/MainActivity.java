@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity{
             }
             return true;
         }
-        if (newSum.equals(".")&&readableSum=="0"){
+        if (newSum.equals(".")&& readableSum.equals("0")){
             newSum="0.";
         }
-        if (readableSum=="Error"){
+        if (readableSum.equals("Error")){
             readableSum="0";interpretedSum.setText("0");
         }
         if (readableSum.equals("0")){readableSum="";}
@@ -332,7 +332,7 @@ public class MainActivity extends AppCompatActivity{
             double parseSimplify() {
                 for (int i = 0; i < str.length(); i++){ //simply sum
                     if (str.charAt(i) == '\u0025'){ //check for percentage, if so replace with percentage as decimal
-                        String constructPerS = "";double constructPerI = 0;int startI = i-1;
+                        String constructPerS = "";double constructPerI;int startI = i-1;
                         while (!(startI == -1)){
                             if ((str.charAt(startI) >= '0' && str.charAt(startI) <= '9') || str.charAt(startI) == '.')
                             {
