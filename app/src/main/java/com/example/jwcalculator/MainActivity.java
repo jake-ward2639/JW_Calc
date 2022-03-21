@@ -235,6 +235,7 @@ public class MainActivity extends AppCompatActivity{
         previousSum.setText(interpretedSum.getText());
         readableSum=total;
         interpretedSum.setText(total);
+        AXMode = false;
     }
     public void btnSinClicked(View v){
         Log.d("CheckF","ButtonClicked");
@@ -355,7 +356,7 @@ public class MainActivity extends AppCompatActivity{
                         String constructEXP = "";String zeros = "";int tempI = i+1;int endI = i+1;
                         while (!(tempI >= str.length())){
                             Log.d("CheckF","while not equal to length");
-                            if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9') || str.charAt(tempI) == '.') {
+                            if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9')  || str.charAt(tempI) == '\u2070' ||str.charAt(tempI) == '\u00B9' ||str.charAt(tempI) == '\u00B2' ||str.charAt(tempI) == '\u00B3' ||str.charAt(tempI) == '\u2074' ||str.charAt(tempI) == '\u2075' ||str.charAt(tempI) == '\u2076' ||str.charAt(tempI) == '\u2077' ||str.charAt(tempI) == '\u2078' ||str.charAt(tempI) == '\u2079'){
                                 constructEXP =  constructEXP + str.charAt(tempI);
                                 Log.d("CheckF","construct number" + constructEXP);
                                 endI = endI +1;
@@ -364,14 +365,14 @@ public class MainActivity extends AppCompatActivity{
                             }
                             tempI = tempI + 1;
                         }
-                        int EXPNum = Integer.parseInt(constructEXP);
+                        double EXPNum = eval(constructEXP);
                         Log.d("CheckF", String.valueOf(EXPNum));
                         for (int b = 0; b < EXPNum; b++){
                             zeros = zeros + "0";
                             Log.d("CheckF","added a zero");
                         }
                         int startI = i-1;
-                        while (!(startI == -1)&&((str.charAt(startI) >= '0' && str.charAt(startI) <= '9') || str.charAt(startI) == '.')){
+                        while (!(startI == -1)&&((str.charAt(startI) >= '0' && str.charAt(startI) <= '9') || str.charAt(startI) == '.' || str.charAt(startI) == '\u2070' ||str.charAt(startI) == '\u00B9' ||str.charAt(startI) == '\u00B2' ||str.charAt(startI) == '\u00B3' ||str.charAt(startI) == '\u2074' ||str.charAt(startI) == '\u2075' ||str.charAt(startI) == '\u2076' ||str.charAt(startI) == '\u2077' ||str.charAt(startI) == '\u2078' ||str.charAt(startI) == '\u2079')){
                             startI = startI - 1;
                         }
                         str = str.substring(0,startI+1)+"("+str.substring(startI+1,i)+"*1"+zeros+")"+str.substring(endI);
@@ -379,7 +380,7 @@ public class MainActivity extends AppCompatActivity{
                     }
                     //add a check for percentage and E
                 }
-
+                Log.d("CheckF",str);
                 nextChar();//start moving through sum
                 double x = parseExpression();//recursive calls start
                 if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
@@ -416,29 +417,7 @@ public class MainActivity extends AppCompatActivity{
                 } else if ((ch >= '0' && ch <= '9') || ch == '.') { // check if numbers
                     while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
                     x = Double.parseDouble(str.substring(startPos, this.pos));
-                    if (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079') {//powers
-                        String powNum = ""; //check if powers
-                        while (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079'){
-                            switch (ch){
-                                case '\u2070':powNum = powNum + "0";break;
-                                case '\u00B9':powNum = powNum + "1";break;
-                                case '\u00B2':powNum = powNum + "2";break;
-                                case '\u00B3':powNum = powNum + "3";break;
-                                case '\u2074':powNum = powNum + "4";break;
-                                case '\u2075':powNum = powNum + "5";break;
-                                case '\u2076':powNum = powNum + "6";break;
-                                case '\u2077':powNum = powNum + "7";break;
-                                case '\u2078':powNum = powNum + "8";break;
-                                case '\u2079':powNum = powNum + "9";break;
-                            }
-                            nextChar();
-                        }
-                        Log.d("CheckF", String.valueOf(x));
-                        Log.d("CheckF",powNum);
-                        Log.d("CheckF", String.valueOf(Double.parseDouble(powNum)));
-                        x = Math.pow(x, Double.parseDouble(powNum));
-                        Log.d("CheckF", String.valueOf(x));
-                    }
+
                 } else if ((ch >= 'a' && ch <= 'z') || ch == '\u221a' || (ch >= 'A' && ch <= 'Z')) { // check if function
                     nextChar(); //base had a while loop to distinguish functions but im only using single characters
                     String function = str.substring(startPos, this.pos);
@@ -482,7 +461,29 @@ public class MainActivity extends AppCompatActivity{
                 } else {
                     throw new RuntimeException("Unexpected: " + (char)ch);
                 }
-
+                if (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079') {//powers
+                    String powNum = ""; //check if powers
+                    while (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079'){
+                        switch (ch){
+                            case '\u2070':powNum = powNum + "0";break;
+                            case '\u00B9':powNum = powNum + "1";break;
+                            case '\u00B2':powNum = powNum + "2";break;
+                            case '\u00B3':powNum = powNum + "3";break;
+                            case '\u2074':powNum = powNum + "4";break;
+                            case '\u2075':powNum = powNum + "5";break;
+                            case '\u2076':powNum = powNum + "6";break;
+                            case '\u2077':powNum = powNum + "7";break;
+                            case '\u2078':powNum = powNum + "8";break;
+                            case '\u2079':powNum = powNum + "9";break;
+                        }
+                        nextChar();
+                    }
+                    Log.d("CheckF", String.valueOf(x));
+                    Log.d("CheckF",powNum);
+                    Log.d("CheckF", String.valueOf(Double.parseDouble(powNum)));
+                    x = Math.pow(x, Double.parseDouble(powNum));
+                    Log.d("CheckF", String.valueOf(x));
+                }
                 return x;
             }
         }.parseSimplify();
