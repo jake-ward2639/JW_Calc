@@ -96,6 +96,12 @@ public class MainActivity extends AppCompatActivity{
             }
             return true;
         }
+        if (newSum.equals(".")&&readableSum=="0"){
+            newSum="0.";
+        }
+        if (readableSum=="Error"){
+            readableSum="0";interpretedSum.setText("0");
+        }
         if (readableSum.equals("0")){readableSum="";}
         readableSum = readableSum + newSum;
         InterpretSum(readableSum);
@@ -206,7 +212,7 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnDelClicked(View v){
         deleteLastChar();
-        if(AXMode){AXMode=false;}
+        AXMode=false;
     }
     public void btnAcClicked(View v){
         readableSum = "0";
@@ -223,6 +229,8 @@ public class MainActivity extends AppCompatActivity{
     }
     public void btnEqualsClicked(View v){
         String total;
+        readableSum = readableSum.replace("\u25AB", "");
+        InterpretSum(readableSum);
         try {
             total = Double.toString(eval(readableSum));
         } catch (Exception e) {
@@ -322,8 +330,23 @@ public class MainActivity extends AppCompatActivity{
             }
 
             double parseSimplify() {
-                for (int i = 0; i < str.length(); i++){ //check for pi, if so replace with pi as number and operators
-                    if (str.charAt(i) == '\u03c0'){
+                for (int i = 0; i < str.length(); i++){ //simply sum
+                    if (str.charAt(i) == '\u0025'){ //check for percentage, if so replace with percentage as decimal
+                        String constructPerS = "";double constructPerI = 0;int startI = i-1;
+                        while (!(startI == -1)){
+                            if ((str.charAt(startI) >= '0' && str.charAt(startI) <= '9') || str.charAt(startI) == '.')
+                            {
+                                constructPerS =  str.charAt(startI) + constructPerS;
+                                startI = startI - 1;
+                            }else{
+                                break;
+                            }
+                        }
+                        constructPerI = Double.parseDouble(constructPerS) / 100;
+                        str = str.substring(0,startI+1)+ constructPerI +str.substring(i+1);
+                        i = startI+1;
+                    }
+                    if (str.charAt(i) == '\u03c0'){ //check for pi, if so replace with pi as number and operators
                         String constructPI = "3.141592654";
                         if (!(i == 0)){
                             if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || str.charAt(i-1) == '\u03c0'){
@@ -337,7 +360,7 @@ public class MainActivity extends AppCompatActivity{
                         }
                         str = str.substring(0,i)+constructPI+str.substring(i+1);
                     }
-                    if (str.charAt(i) == 'e'){
+                    if (str.charAt(i) == 'e'){ //check for e, if so replace with e as number and operators
                         String constructE = "2.71828182846";
                         if (!(i == 0)){
                             if ((str.charAt(i-1) >= '0' && str.charAt(i-1) <= '9') || str.charAt(i-1) == 'e'){
@@ -351,7 +374,7 @@ public class MainActivity extends AppCompatActivity{
                         }
                         str = str.substring(0,i)+constructE+str.substring(i+1);
                     }
-                    if (str.charAt(i) == 'E'){
+                    if (str.charAt(i) == 'E'){ //check for E, if so replace with exponent in normal form using the number before and after
                         Log.d("CheckF","Recognised E");
                         String constructEXP = "";String zeros = "";int tempI = i+1;int endI = i+1;
                         while (!(tempI >= str.length())){
@@ -459,7 +482,7 @@ public class MainActivity extends AppCompatActivity{
                     }
                 } else {
                     throw new RuntimeException("Unexpected: " + (char)ch);
-                }
+                } //after a bracket, number or function check if powers apply
                 if (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079') {//powers
                     String powNum = ""; //check if powers
                     while (ch == '\u2070' ||ch == '\u00B9' ||ch == '\u00B2' ||ch == '\u00B3' ||ch == '\u2074' ||ch == '\u2075' ||ch == '\u2076' ||ch == '\u2077' ||ch == '\u2078' ||ch == '\u2079'){
