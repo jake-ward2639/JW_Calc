@@ -360,7 +360,7 @@ public class MainActivity extends AppCompatActivity{
                                 Log.d("CheckF","construct number" + constructEXP);
                                 endI = endI +1;
                             } else {
-                                endI = tempI;tempI = str.length();
+                                tempI = str.length();
                             }
                             tempI = tempI + 1;
                         }
@@ -370,11 +370,11 @@ public class MainActivity extends AppCompatActivity{
                             zeros = zeros + "0";
                             Log.d("CheckF","added a zero");
                         }
-                        int tempI2 = i-1;
-                        while (!(tempI2 == -1)&&((str.charAt(tempI2) >= '0' && str.charAt(tempI2) <= '9') || str.charAt(tempI2) == '.')){
-                            tempI2 = tempI2 - 1;
+                        int startI = i-1;
+                        while (!(startI == -1)&&((str.charAt(startI) >= '0' && str.charAt(startI) <= '9') || str.charAt(startI) == '.')){
+                            startI = startI - 1;
                         }
-                        str = str.substring(0,tempI2+1)+"("+str.substring(tempI2+1,i)+"*1"+zeros+")"+str.substring(endI);
+                        str = str.substring(0,startI+1)+"("+str.substring(startI+1,i)+"*1"+zeros+")"+str.substring(endI);
                         Log.d("CheckF",str);
                     }
                     //add a check for percentage and E
