@@ -352,18 +352,15 @@ public class MainActivity extends AppCompatActivity{
                     }
                     if (str.charAt(i) == 'E'){
                         Log.d("CheckF","Recognised E");
-                        String constructEXP = "";
-                        String zeros = "";
-                        int tempI = i+1;
-                        int endI = i+1;
-                        while (!(tempI == str.length())){
+                        String constructEXP = "";String zeros = "";int tempI = i+1;int endI = i+1;
+                        while (!(tempI >= str.length())){
                             Log.d("CheckF","while not equal to length");
                             if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9') || str.charAt(tempI) == '.') {
                                 constructEXP =  constructEXP + str.charAt(tempI);
                                 Log.d("CheckF","construct number" + constructEXP);
                             } else {
                                 endI = tempI;
-                                tempI = str.length()-1;
+                                tempI = str.length();
                             }
                             tempI = tempI + 1;
                         }
