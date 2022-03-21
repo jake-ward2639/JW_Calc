@@ -417,7 +417,6 @@ public class MainActivity extends AppCompatActivity{
                 } else if ((ch >= '0' && ch <= '9') || ch == '.') { // check if numbers
                     while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
                     x = Double.parseDouble(str.substring(startPos, this.pos));
-
                 } else if ((ch >= 'a' && ch <= 'z') || ch == '\u221a' || (ch >= 'A' && ch <= 'Z')) { // check if function
                     nextChar(); //base had a while loop to distinguish functions but im only using single characters
                     String function = str.substring(startPos, this.pos);
