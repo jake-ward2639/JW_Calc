@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/calcOutput1"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:gravity="bottom|end"
             android:text="0"
@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/calcOutput2"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="11dp"
             android:gravity="bottom|end"
             android:text="0"
