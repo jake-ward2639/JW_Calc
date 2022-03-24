@@ -24,7 +24,6 @@
     <string name="ac">AC</string>
     <string name="calc">Calc</string>
     <string name="func">Func</string>
-    <string name="history">History</string>
     <string name="u221a">√</string>
     <string name="tan">TAN</string>
     <string name="cos">COS</string>
@@ -41,4 +40,6 @@
     <string name="tan_1">TAN-1</string>
     <string name="cos_1">COS-1</string>
     <string name="u03c0">π</string>
+    <string name="tips">Tips\n\nπ is a mathematical constant, approximately equal to 3.14159\n\ne, also known as Euler\'s number, is a mathematical constant approximately equal to 2.71828\n\nexp stands for exponential, the number before the E is multiplied by 10 to the power of the number after\n\n sine and cosine are trigonometric functions of an angle\n\ntangent of an angle is the trigonometric ratio between the adjacent side and the opposite side of a right triangle containing that angle\n\narcsine of x is defined as the inverse sine function of x, the same applies for arctangent and arccosine\n\nThe square root √ of a number is another number which produces the first number when it is multiplied by itself\n\nln or natural logarithm of a number is its logarithm to the base of the mathematical constant e\n\nlog returns the base 10 logarithm of a number\n\nAX and A2 are your exponents/powers and so should be used to multiply the number by itself the inputted amount of times</string>
+    <string name="tipsTitle">Tips</string>
 </resources>

@@ -7,11 +7,22 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -63,7 +74,7 @@ public class MainActivity extends AppCompatActivity{
         VPAdapter vpAdapter = new VPAdapter(this);
         viewPager.setAdapter(vpAdapter);
 
-        String[] tabTitles = {"Calc","Func","History"};
+        String[] tabTitles = {"Calc","Func","Tips"};
 
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(tabTitles[position])).attach();
@@ -148,6 +159,21 @@ public class MainActivity extends AppCompatActivity{
         }
         InterpretSum(readableSum);
         return true;
+    }
+
+    public void writeToHistory(String toWrite){
+        try {
+            File file = new File("JWCalcHistory.txt");//needs to be rewritten to append the file in assets
+            if (!file.exists())
+                file.createNewFile();
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(toWrite);
+            bw.newLine();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void btn0Clicked(View v){
@@ -241,6 +267,8 @@ public class MainActivity extends AppCompatActivity{
             total = total.substring(0,total.length()-2);
         }
         previousSum.setText(interpretedSum.getText());
+        //writeToHistory((String) interpretedSum.getText());
+        //writeToHistory(total);
         readableSum=total;
         interpretedSum.setText(total);
         AXMode = false;

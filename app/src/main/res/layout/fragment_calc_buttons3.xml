@@ -5,13 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".FragmentCalcButtons3">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <LinearLayout
-        android:id="@+id/historyLayout"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/historyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:text="@string/tips"/>
     </LinearLayout>
 
 </ScrollView>
