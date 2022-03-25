@@ -14,14 +14,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity{
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity{
         readableSum = "0";
 
         AXMode = false;
+        writeToHistory("");
     }
 
     public boolean UpdateSum(String newSum){
@@ -140,6 +144,10 @@ public class MainActivity extends AppCompatActivity{
                     readSum.append("\u00F7");break;
                 case '*':
                     readSum.append("x");break;
+                case 'l':
+                    readSum.append("ln");break;
+                case 'L':
+                    readSum.append("Log");break;
                 default: readSum.append(readingSum.charAt(i));
             }
 
@@ -161,17 +169,19 @@ public class MainActivity extends AppCompatActivity{
         return true;
     }
 
-    public void writeToHistory(String toWrite){
+    public void writeToHistory(String toWrite) {
         try {
-            File file = new File("JWCalcHistory.txt");//needs to be rewritten to append the file in assets
-            if (!file.exists())
-                file.createNewFile();
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
+            File path = getApplicationContext().getFilesDir();
+            File file = new File(path, "JWCalcHistory.txt");
+            FileOutputStream fos = new FileOutputStream(file);
+
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+
             bw.write(toWrite);
-            bw.newLine();
+
             bw.close();
-        } catch (IOException e) {
+            Log.d("CheckF","history written to");
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -249,9 +259,17 @@ public class MainActivity extends AppCompatActivity{
         Log.d("CheckF","ButtonClicked");
         UpdateSum("e");
     }
-    public void btnAnsClicked(View v){
-        Log.d("CheckF","ButtonClicked");
-        UpdateSum("1");
+    public void btnAnsClicked(View v) throws IOException {
+        File path = getApplicationContext().getFilesDir();
+        File file = new File(path,"JWCalcHistory.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String oldAns = br.readLine();
+        if (!(oldAns == "null"||oldAns==null)) {
+            if (Character.isDigit(readableSum.charAt(readableSum.length() - 1))) {
+                oldAns = "*" + oldAns;
+            }
+            UpdateSum(oldAns);
+        }
     }
     public void btnEqualsClicked(View v){
         String total;
@@ -266,9 +284,11 @@ public class MainActivity extends AppCompatActivity{
         if (total.endsWith(".0")){
             total = total.substring(0,total.length()-2);
         }
+        if (!(total=="Error" || total=="NaN" || total=="Infinity")){//only save if not an Error
+            writeToHistory((String) interpretedSum.getText());
+            writeToHistory(total);
+        }
         previousSum.setText(interpretedSum.getText());
-        //writeToHistory((String) interpretedSum.getText());
-        //writeToHistory(total);
         readableSum=total;
         interpretedSum.setText(total);
         AXMode = false;
