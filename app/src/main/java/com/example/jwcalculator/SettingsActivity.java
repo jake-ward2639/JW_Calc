@@ -2,10 +2,15 @@ package com.example.jwcalculator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -47,6 +52,23 @@ public class SettingsActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        SwitchCompat darkModeSwitch = findViewById(R.id.DMSwitch);
+        int darkModeQ = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (darkModeQ == Configuration.UI_MODE_NIGHT_YES){
+            darkModeSwitch.setChecked(true);
+        }
+        darkModeSwitch.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            if (darkModeSwitch.isPressed()) {
+                if (darkModeSwitch.isChecked()) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    Log.d("CheckF", "SetDarkMode" + darkModeSwitch.isChecked());
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    Log.d("CheckF", "SetLightMode" + darkModeSwitch.isChecked());
+                }
             }
         });
     }
