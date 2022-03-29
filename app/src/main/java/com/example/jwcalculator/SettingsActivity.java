@@ -10,6 +10,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -71,5 +72,10 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void closeApp(View v){
+        this.finishAffinity();
+        System.exit(0);
     }
 }

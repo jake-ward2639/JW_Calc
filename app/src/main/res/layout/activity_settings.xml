@@ -27,7 +27,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10sp"
+        app:layout_constraintBottom_toTopOf="@id/calMenu"
+        android:text="@string/close_app"
+        android:onClick="closeApp"
+    />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/calMenu"
         android:layout_width="match_parent"
