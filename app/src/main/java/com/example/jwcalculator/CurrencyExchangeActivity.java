@@ -92,7 +92,6 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 fromCurrency = fromCurrencySpinner.getSelectedItem().toString();
                 getAPIExchangeRate();
-                updateERActivity();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
@@ -102,7 +101,6 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 toCurrency = toCurrencySpinner.getSelectedItem().toString();
                 getAPIExchangeRate();
-                updateERActivity();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
@@ -119,7 +117,6 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 getAPIExchangeRate();
-                updateERActivity();
             }
         });
     }
@@ -149,6 +146,7 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
                                 String results = reader.getJSONObject("rates").getString(toCurrency);
                                 exchangeRate = Float.parseFloat(results);
                                 Log.d("CheckF", String.valueOf(exchangeRate));
+                                updateERActivity();
 
                             } catch (JSONException e) { Log.d("CheckF", e.getLocalizedMessage()); }
                         }
