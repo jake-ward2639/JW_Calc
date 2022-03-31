@@ -44,6 +44,9 @@
     <string name="tipsTitle">Tips</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="close_app">Close App</string>
+    <string name="length">Length</string>
+    <string name="from">FROM</string>
+    <string name="to">TO</string>
 
     <string-array name="currencyFrom">
         <item>GBP</item>
@@ -114,5 +117,19 @@
         <item>RUB</item>
         <item>KRW</item>
         <item>HUF</item>
+    </string-array>
+
+    <string-array name="lengthArray">
+        <item>Meters</item>
+        <item>Kilometres</item>
+        <item>Centimeters</item>
+        <item>Millimetres</item>
+        <item>Micrometres</item>
+        <item>Nanometres</item>
+        <item>Miles</item>
+        <item>Yards</item>
+        <item>Feet</item>
+        <item>Inches</item>
+        <item>Nautical Miles</item>
     </string-array>
 </resources>
