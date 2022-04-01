@@ -2,12 +2,10 @@ package com.example.jwcalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,15 +15,10 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -246,7 +239,7 @@ public class MainActivity extends AppCompatActivity{
         File file = new File(path,"JWCalcHistory.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String oldAns = br.readLine();
-        if (!(oldAns == "null"||oldAns==null)) {
+        if (!(oldAns.equals("null") || oldAns.equals(""))) {
             if (Character.isDigit(readableSum.charAt(readableSum.length() - 1))) {
                 oldAns = "*" + oldAns;
             }
@@ -266,7 +259,7 @@ public class MainActivity extends AppCompatActivity{
         if (total.endsWith(".0")){
             total = total.substring(0,total.length()-2);
         }
-        if (!(total=="Error" || total=="NaN" || total=="Infinity")){//only save if not an Error
+        if (!(total.equals("Error") || total.equals("NaN") || total.equals("Infinity"))){//only save if not an Error
             writeToHistory((String) interpretedSum.getText());
             writeToHistory(total);
         }

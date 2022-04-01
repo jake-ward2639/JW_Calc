@@ -1,18 +1,16 @@
 package com.example.jwcalculator;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -32,9 +30,9 @@ public class UnitConverterActivity extends AppCompatActivity {
     EditText convertVolumeTwoEdit;
     Spinner convertVolumeTwoSpinner;
     Double output; //initialise all elements including conversion formulas. Bases for types are meters, kilograms and millimeters
-    final double Meters = 1;final double Kilometers = 0.001;final double Centimeters = 100;final double Millimetres = 1000;final double Micrometres = 1000000;final double Nanometres = 1000000000;final double Miles = 0.000621371;final double Yards = 1.094;final double Feet = 3.281;final double Inches = 39.37008;final double NMiles = 0.000539957;
-    final double Kilograms = 1;final double Tonnes =  0.001;final double Grams = 1000;final double Milligrams = 1000000;final double Micrograms =  1000000000;final double ITon = 0.000984207;final double USTon =  0.00110231;final double Stone = 0.157473;final double Pounds =  2.20462;final double Ounces =  35.274;
-    final double Milliliters = 1;final double USLGallon = 3785.41;final double USLQuart = 946.353;final double USLPint = 473.176;final double USLCup = 240;final double FOunces = 29.5735;final double USTablespoon = 14.7868;final double USTeaspoon = 4.92892;final double CMeters = 1000000;final double CFeet = 28316.8;final double CInches = 16.3871;final double Liters = 1000;final double ILGallon = 4546.09;final double ILQuart = 1136.52;final double ILPint = 568.261;final double ILCup = 284.131;final double ITablespoon = 17.7582;final double ITeaspoon = 5.91939;
+    final double Kilometers = 0.001;final double Centimeters = 100;final double Millimetres = 1000;final double Micrometres = 1000000;final double Nanometres = 1000000000;final double Miles = 0.000621371;final double Yards = 1.094;final double Feet = 3.281;final double Inches = 39.37008;final double NMiles = 0.000539957;
+    final double Tonnes =  0.001;final double Grams = 1000;final double Milligrams = 1000000;final double Micrograms =  1000000000;final double ITon = 0.000984207;final double USTon =  0.00110231;final double Stone = 0.157473;final double Pounds =  2.20462;final double Ounces =  35.274;
+    final double USLGallon = 3785.41;final double USLQuart = 946.353;final double USLPint = 473.176;final double USLCup = 240;final double FOunces = 29.5735;final double USTablespoon = 14.7868;final double USTeaspoon = 4.92892;final double CMeters = 1000000;final double CFeet = 28316.8;final double CInches = 16.3871;final double Liters = 1000;final double ILGallon = 4546.09;final double ILQuart = 1136.52;final double ILPint = 568.261;final double ILCup = 284.131;final double ITablespoon = 17.7582;final double ITeaspoon = 5.91939;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,33 +42,30 @@ public class UnitConverterActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.calMenu);
 
         bottomNavigationView.setSelectedItemId(R.id.ToUC);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
-                switch (menuitem.getItemId()){
-                    case R.id.ToCalc:
-                        startActivity(new Intent(getApplicationContext()
-                                ,MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToUC:
-                        startActivity(new Intent(getApplicationContext()
-                                ,UnitConverterActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToCE:
-                        startActivity(new Intent(getApplicationContext()
-                                ,CurrencyExchangeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToSettings:
-                        startActivity(new Intent(getApplicationContext()
-                                ,SettingsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuitem -> {
+            switch (menuitem.getItemId()){
+                case R.id.ToCalc:
+                    startActivity(new Intent(getApplicationContext()
+                            ,MainActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToUC:
+                    startActivity(new Intent(getApplicationContext()
+                            ,UnitConverterActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToCE:
+                    startActivity(new Intent(getApplicationContext()
+                            ,CurrencyExchangeActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToSettings:
+                    startActivity(new Intent(getApplicationContext()
+                            ,SettingsActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
             }
+            return false;
         });
 
         convertLengthOneEdit = findViewById(R.id.convertLengthOneEdit);

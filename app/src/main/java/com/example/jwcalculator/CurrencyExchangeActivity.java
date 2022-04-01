@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -25,8 +23,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 public class CurrencyExchangeActivity extends AppCompatActivity {
 
@@ -58,33 +54,30 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
         toCurrencySpinner.setAdapter(adapter1);
 
         bottomNavigationView.setSelectedItemId(R.id.ToCE);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
-                switch (menuitem.getItemId()){
-                    case R.id.ToCalc:
-                        startActivity(new Intent(getApplicationContext()
-                                ,MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToUC:
-                        startActivity(new Intent(getApplicationContext()
-                                ,UnitConverterActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToCE:
-                        startActivity(new Intent(getApplicationContext()
-                                ,CurrencyExchangeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.ToSettings:
-                        startActivity(new Intent(getApplicationContext()
-                                ,SettingsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuitem -> {
+            switch (menuitem.getItemId()){
+                case R.id.ToCalc:
+                    startActivity(new Intent(getApplicationContext()
+                            ,MainActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToUC:
+                    startActivity(new Intent(getApplicationContext()
+                            ,UnitConverterActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToCE:
+                    startActivity(new Intent(getApplicationContext()
+                            ,CurrencyExchangeActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.ToSettings:
+                    startActivity(new Intent(getApplicationContext()
+                            ,SettingsActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
             }
+            return false;
         });
 
         fromCurrencySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { //listeners call the api method
@@ -132,8 +125,7 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
         if(fromCurrencyEdit.getText().length() != 0){
             String url_str = "https://api.exchangerate.host/latest?base=" + fromCurrency + "&symbols=" + toCurrency;
             StringRequest request = new StringRequest(Request.Method.GET, url_str,
-                    new Response.Listener()
-                    {
+                    new Response.Listener() {
                         @Override
                         public void onResponse(Object response)
                         {
@@ -148,12 +140,7 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
                             } catch (JSONException e) { Log.d("CheckF", e.getLocalizedMessage()); }
                         }
                     },
-                    new Response.ErrorListener()
-                    {
-                        @Override
-                        public void onErrorResponse(VolleyError error)
-                        {
-                        }
+                    error -> {
                     });
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             queue.add(request);
