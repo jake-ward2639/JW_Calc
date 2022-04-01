@@ -39,7 +39,6 @@ public class FragmentCalcButtons1 extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        Log.d("CheckF","Fragment1 Created");
         return inflater.inflate(R.layout.fragment_calc_buttons1, container, false);
     }
 

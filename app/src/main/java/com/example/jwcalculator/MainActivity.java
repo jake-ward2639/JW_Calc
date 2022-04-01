@@ -159,7 +159,6 @@ public class MainActivity extends AppCompatActivity{
         if(readableSum.equals("0")){
             return true;
         }
-        Log.d("CheckF","ButtonClicked");
         StringBuffer sb= new StringBuffer(readableSum);
         readableSum = String.valueOf(sb.deleteCharAt(sb.length()-1));
         if(readableSum.equals("")){
@@ -180,70 +179,54 @@ public class MainActivity extends AppCompatActivity{
             bw.write(toWrite);
 
             bw.close();
-            Log.d("CheckF","history written to");
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
     public void btn0Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("0");
     }
     public void btn1Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("1");
     }
     public void btn2Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("2");
     }
     public void btn3Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("3");
     }
     public void btn4Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("4");
     }
     public void btn5Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("5");
     }
     public void btn6Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("6");
     }
     public void btn7Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("7");
     }
     public void btn8Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("8");
     }
     public void btn9Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("9");
     }
     public void btnDotClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum(".");
     }
     public void btnPlusClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("+");
     }
     public void btnMinusClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("-");
     }
     public void btnDivClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("/");
     }
     public void btnXClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("*");
     }
     public void btnDelClicked(View v){
@@ -256,7 +239,6 @@ public class MainActivity extends AppCompatActivity{
         interpretedSum.setText(readableSum);
     }
     public void btnEClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("e");
     }
     public void btnAnsClicked(View v) throws IOException {
@@ -294,68 +276,52 @@ public class MainActivity extends AppCompatActivity{
         AXMode = false;
     }
     public void btnSinClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("S");
     }
     public void btnCosClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("C");
     }
     public void btnTanClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("T");
     }
     public void btnSinM1Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("s");
     }
     public void btnCosM1Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("c");
     }
     public void btnTanM1Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("t");
     }
     public void btnSqRClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("\u221a");
     }
     public void btnPiClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("\u03c0");
     }
     public void btnA2Clicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("\u00B2");
     }
     public void btnAXClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("\u25AB");
         AXMode = true;
     }
     public void btnOBracClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("(");
     }
     public void btnCBracClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum(")");
     }
     public void btnPerClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("\u0025");
     }
     public void btnLnClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("l");
     }
     public void btnLogClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("L");
     }
     public void btnEXPClicked(View v){
-        Log.d("CheckF","ButtonClicked");
         UpdateSum("E");
     }
     public static double eval(final String input) {
@@ -365,7 +331,6 @@ public class MainActivity extends AppCompatActivity{
 
             void nextChar() {
                 ch = (++pos < str.length()) ? str.charAt(pos) : -1;//move onto next character until done
-                Log.d("CheckF", String.valueOf(ch));
             }
 
             boolean use(int charToUse) {
@@ -423,13 +388,10 @@ public class MainActivity extends AppCompatActivity{
                         str = str.substring(0,i)+constructE+str.substring(i+1);
                     }
                     if (str.charAt(i) == 'E'){ //check for E, if so replace with exponent in normal form using the number before and after
-                        Log.d("CheckF","Recognised E");
                         String constructEXP = "";String zeros = "";int tempI = i+1;int endI = i+1;
                         while (!(tempI >= str.length())){
-                            Log.d("CheckF","while not equal to length");
                             if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9')  || str.charAt(tempI) == '\u2070' ||str.charAt(tempI) == '\u00B9' ||str.charAt(tempI) == '\u00B2' ||str.charAt(tempI) == '\u00B3' ||str.charAt(tempI) == '\u2074' ||str.charAt(tempI) == '\u2075' ||str.charAt(tempI) == '\u2076' ||str.charAt(tempI) == '\u2077' ||str.charAt(tempI) == '\u2078' ||str.charAt(tempI) == '\u2079'){
                                 constructEXP =  constructEXP + str.charAt(tempI);
-                                Log.d("CheckF","construct number" + constructEXP);
                                 endI = endI +1;
                             } else {
                                 tempI = str.length();
@@ -437,21 +399,17 @@ public class MainActivity extends AppCompatActivity{
                             tempI = tempI + 1;
                         }
                         double EXPNum = eval(constructEXP);
-                        Log.d("CheckF", String.valueOf(EXPNum));
                         for (int b = 0; b < EXPNum; b++){
                             zeros = zeros + "0";
-                            Log.d("CheckF","added a zero");
                         }
                         int startI = i-1;
                         while (!(startI == -1)&&((str.charAt(startI) >= '0' && str.charAt(startI) <= '9') || str.charAt(startI) == '.' || str.charAt(startI) == '\u2070' ||str.charAt(startI) == '\u00B9' ||str.charAt(startI) == '\u00B2' ||str.charAt(startI) == '\u00B3' ||str.charAt(startI) == '\u2074' ||str.charAt(startI) == '\u2075' ||str.charAt(startI) == '\u2076' ||str.charAt(startI) == '\u2077' ||str.charAt(startI) == '\u2078' ||str.charAt(startI) == '\u2079')){
                             startI = startI - 1;
                         }
                         str = str.substring(0,startI+1)+"("+str.substring(startI+1,i)+"*1"+zeros+")"+str.substring(endI);
-                        Log.d("CheckF",str);
                     }
                     //add a check for percentage and E
                 }
-                Log.d("CheckF",str);
                 nextChar();//start moving through sum
                 double x = parseExpression();//recursive calls start
                 if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
@@ -548,11 +506,7 @@ public class MainActivity extends AppCompatActivity{
                         }
                         nextChar();
                     }
-                    Log.d("CheckF", String.valueOf(x));
-                    Log.d("CheckF",powNum);
-                    Log.d("CheckF", String.valueOf(Double.parseDouble(powNum)));
                     x = Math.pow(x, Double.parseDouble(powNum));
-                    Log.d("CheckF", String.valueOf(x));
                 }
                 return x;
             }

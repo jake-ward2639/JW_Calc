@@ -46,7 +46,7 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.calMenu);
         fromCurrencyEdit = findViewById(R.id.convertOneEdit);
-        fromCurrencySpinner = findViewById(R.id.convertOneSpinner);
+        fromCurrencySpinner = findViewById(R.id.convertOneSpinner); //setup spinners
         toCurrencyEdit = findViewById(R.id.convertTwoEdit);
         toCurrencySpinner = findViewById(R.id.convertTwoSpinner);
 
@@ -87,7 +87,7 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
             }
         });
 
-        fromCurrencySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        fromCurrencySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { //listeners call the api method
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 fromCurrency = fromCurrencySpinner.getSelectedItem().toString();
@@ -121,18 +121,16 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
         });
     }
 
-    public void updateERActivity(){
+    public void updateERActivity(){//display the correct conversion in the "TO" box
         if(fromCurrencyEdit.getText().length()!=0) {
             float result = Float.parseFloat(String.valueOf(fromCurrencyEdit.getText())) * exchangeRate;
-            Log.d("CheckF", "edit "+ String.valueOf(fromCurrencyEdit.getText()) + " ER "+exchangeRate + " result "+result);
             toCurrencyEdit.setText(String.valueOf(result));
         }
     }
 
-    private void getAPIExchangeRate() {
+    private void getAPIExchangeRate() {//get the exchange rate from the api and display the result
         if(fromCurrencyEdit.getText().length() != 0){
             String url_str = "https://api.exchangerate.host/latest?base=" + fromCurrency + "&symbols=" + toCurrency;
-            Log.d("CheckF", "Running !!!");
             StringRequest request = new StringRequest(Request.Method.GET, url_str,
                     new Response.Listener()
                     {
@@ -145,7 +143,6 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
                                 JSONObject reader = new JSONObject(response.toString());
                                 String results = reader.getJSONObject("rates").getString(toCurrency);
                                 exchangeRate = Float.parseFloat(results);
-                                Log.d("CheckF", String.valueOf(exchangeRate));
                                 updateERActivity();
 
                             } catch (JSONException e) { Log.d("CheckF", e.getLocalizedMessage()); }
@@ -156,7 +153,6 @@ public class CurrencyExchangeActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error)
                         {
-                            Log.d("CheckF", "FAILED! ");
                         }
                     });
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());

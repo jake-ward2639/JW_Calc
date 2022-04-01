@@ -47,6 +47,8 @@
     <string name="length">Length</string>
     <string name="from">FROM</string>
     <string name="to">TO</string>
+    <string name="mass">Mass</string>
+    <string name="volume">Volume</string>
 
     <string-array name="currencyFrom">
         <item>GBP</item>
@@ -131,5 +133,37 @@
         <item>Feet</item>
         <item>Inches</item>
         <item>Nautical Miles</item>
+    </string-array>
+    <string-array name="massArray">
+        <item>Kilograms</item>
+        <item>Tonnes</item>
+        <item>Grams</item>
+        <item>Milligrams</item>
+        <item>Micrograms</item>
+        <item>Imperial Ton</item>
+        <item>US Ton</item>
+        <item>Stone</item>
+        <item>Pounds</item>
+        <item>Ounces</item>
+    </string-array>
+    <string-array name="volumeArray">
+        <item>Milliliters</item>
+        <item>US Liquid Gallon</item>
+        <item>US Liquid Quart</item>
+        <item>US Liquid Pint</item>
+        <item>US Liquid Cup</item>
+        <item>Fluid Ounces</item>
+        <item>US TableSpoon</item>
+        <item>US TeaSpoon</item>
+        <item>Cubic Meters</item>
+        <item>Cubic Feet</item>
+        <item>Cubic Inches</item>
+        <item>Liters</item>
+        <item>Imperial Liquid Gallon</item>
+        <item>Imperial Liquid Quart</item>
+        <item>Imperial Liquid Pint</item>
+        <item>Imperial Liquid Cup</item>
+        <item>Imperial TableSpoon</item>
+        <item>Imperial TeaSpoon</item>
     </string-array>
 </resources>
