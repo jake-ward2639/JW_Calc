@@ -2,6 +2,7 @@ package com.example.jwcalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -81,7 +82,11 @@ public class MainActivity extends AppCompatActivity{
         readableSum = "0";
 
         AXMode = false;
-        writeToHistory("");
+        File path = getApplicationContext().getFilesDir();
+        File file = new File(path, "JWCalcHistory.txt");
+        if(!file.exists()){
+            writeToHistory("");
+        }
     }
 
     public boolean UpdateSum(String newSum){
@@ -150,6 +155,7 @@ public class MainActivity extends AppCompatActivity{
 
     public boolean deleteLastChar(){
         if(readableSum.equals("0")){
+            interpretedSum.setText("0");
             return true;
         }
         StringBuffer sb= new StringBuffer(readableSum);
@@ -239,8 +245,8 @@ public class MainActivity extends AppCompatActivity{
         File file = new File(path,"JWCalcHistory.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String oldAns = br.readLine();
-        if (!(oldAns.equals("null") || oldAns.equals(""))) {
-            if (Character.isDigit(readableSum.charAt(readableSum.length() - 1))) {
+        if (oldAns != null) {
+            if (Character.isDigit(readableSum.charAt(readableSum.length() - 1))&&!(interpretedSum.getText()=="0")){
                 oldAns = "*" + oldAns;
             }
             UpdateSum(oldAns);

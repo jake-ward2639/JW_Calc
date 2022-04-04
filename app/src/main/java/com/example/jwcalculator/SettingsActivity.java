@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -63,6 +68,16 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void clearHistory(View v) throws FileNotFoundException {
+        File path = getApplicationContext().getFilesDir();
+        File file = new File(path, "JWCalcHistory.txt");
+        PrintWriter writer = new PrintWriter(file);
+        writer.print("");
+        writer.close();
+        Toast toast = Toast.makeText(getApplicationContext(), "History Cleared", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     public void closeApp(View v){
