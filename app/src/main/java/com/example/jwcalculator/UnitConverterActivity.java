@@ -29,7 +29,7 @@ public class UnitConverterActivity extends AppCompatActivity {
     Spinner convertVolumeOneSpinner;
     EditText convertVolumeTwoEdit;
     Spinner convertVolumeTwoSpinner;
-    Double output; //initialise all elements including conversion formulas. Bases for types are meters, kilograms and millimeters
+    Double output; //initialise all elements including conversion formulas. Bases for types are meters, kilograms and milliliters
     final double Kilometers = 0.001;final double Centimeters = 100;final double Millimetres = 1000;final double Micrometres = 1000000;final double Nanometres = 1000000000;final double Miles = 0.000621371;final double Yards = 1.094;final double Feet = 3.281;final double Inches = 39.37008;final double NMiles = 0.000539957;
     final double Tonnes =  0.001;final double Grams = 1000;final double Milligrams = 1000000;final double Micrograms =  1000000000;final double ITon = 0.000984207;final double USTon =  0.00110231;final double Stone = 0.157473;final double Pounds =  2.20462;final double Ounces =  35.274;
     final double USLGallon = 3785.41;final double USLQuart = 946.353;final double USLPint = 473.176;final double USLCup = 240;final double FOunces = 29.5735;final double USTablespoon = 14.7868;final double USTeaspoon = 4.92892;final double CMeters = 1000000;final double CFeet = 28316.8;final double CInches = 16.3871;final double Liters = 1000;final double ILGallon = 4546.09;final double ILQuart = 1136.52;final double ILPint = 568.261;final double ILCup = 284.131;final double ITablespoon = 17.7582;final double ITeaspoon = 5.91939;
@@ -341,55 +341,55 @@ public class UnitConverterActivity extends AppCompatActivity {
                     output = Double.parseDouble(convertVolumeOneEdit.getText().toString());
                     break;
                 case "US Liquid Gallon":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/USLGallon;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*USLGallon;
                     break;
                 case "US Liquid Quart":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/USLQuart;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*USLQuart;
                     break;
                 case "US Liquid Pint":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/USLPint;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*USLPint;
                     break;
                 case "US Liquid Cup":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/USLCup;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*USLCup;
                     break;
                 case "Fluid Ounces":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/FOunces;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*FOunces;
                     break;
                 case "US TableSpoon":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/USTablespoon;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*USTablespoon;
                     break;
                 case "US TeaSpoon":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/USTeaspoon;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*USTeaspoon;
                     break;
                 case "Cubic Meters":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/CMeters;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*CMeters;
                     break;
                 case "Cubic Feet":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/CFeet;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*CFeet;
                     break;
                 case "Cubic Inches":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/CInches;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*CInches;
                     break;
                 case "Liters":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/Liters;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*Liters;
                     break;
                 case "Imperial Liquid Gallon":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/ILGallon;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*ILGallon;
                     break;
                 case "Imperial Liquid Quart":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/ILQuart;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*ILQuart;
                     break;
                 case "Imperial Liquid Pint":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/ILPint;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*ILPint;
                     break;
                 case "Imperial Liquid Cup":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/ILCup;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*ILCup;
                     break;
                 case "Imperial TableSpoon":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/ITablespoon;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*ITablespoon;
                     break;
                 case "Imperial TeaSpoon":
-                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())/ITeaspoon;
+                    output = Double.parseDouble(convertVolumeOneEdit.getText().toString())*ITeaspoon;
                     break;
             }
 
@@ -397,55 +397,55 @@ public class UnitConverterActivity extends AppCompatActivity {
                 case "Milliliters":
                     break;
                 case "US Liquid Gallon":
-                    output = output * USLGallon;
+                    output = output / USLGallon;
                     break;
                 case "US Liquid Quart":
-                    output = output * USLQuart;
+                    output = output / USLQuart;
                     break;
                 case "US Liquid Pint":
-                    output = output * USLPint;
+                    output = output / USLPint;
                     break;
                 case "US Liquid Cup":
-                    output = output * USLCup;
+                    output = output / USLCup;
                     break;
                 case "Fluid Ounces":
-                    output = output * FOunces;
+                    output = output / FOunces;
                     break;
                 case "US TableSpoon":
-                    output = output * USTablespoon;
+                    output = output / USTablespoon;
                     break;
                 case "US TeaSpoon":
-                    output = output * USTeaspoon;
+                    output = output / USTeaspoon;
                     break;
                 case "Cubic Meters":
-                    output = output * CMeters;
+                    output = output / CMeters;
                     break;
                 case "Cubic Feet":
-                    output = output * CFeet;
+                    output = output / CFeet;
                     break;
                 case "Cubic Inches":
-                    output = output * CInches;
+                    output = output / CInches;
                     break;
                 case "Liters":
-                    output = output * Liters;
+                    output = output / Liters;
                     break;
                 case "Imperial Liquid Gallon":
-                    output = output * ILGallon;
+                    output = output / ILGallon;
                     break;
                 case "Imperial Liquid Quart":
-                    output = output * ILQuart;
+                    output = output / ILQuart;
                     break;
                 case "Imperial Liquid Pint":
-                    output = output * ILPint;
+                    output = output / ILPint;
                     break;
                 case "Imperial Liquid Cup":
-                    output = output * ILCup;
+                    output = output / ILCup;
                     break;
                 case "Imperial TableSpoon":
-                    output = output * ITablespoon;
+                    output = output / ITablespoon;
                     break;
                 case "Imperial TeaSpoon":
-                    output = output * ITeaspoon;
+                    output = output / ITeaspoon;
                     break;
             }
 
