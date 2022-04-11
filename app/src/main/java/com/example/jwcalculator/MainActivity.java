@@ -389,8 +389,10 @@ public class MainActivity extends AppCompatActivity{
                     if (str.charAt(i) == 'E'){ //check for E, if so replace with exponent in normal form using the number before and after
                         String constructEXP = "";String zeros = "";int tempI = i+1;int endI = i+1;
                         while (!(tempI >= str.length())){
-                            if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9')  || str.charAt(tempI) == '\u2070' ||str.charAt(tempI) == '\u00B9' ||str.charAt(tempI) == '\u00B2' ||str.charAt(tempI) == '\u00B3' ||str.charAt(tempI) == '\u2074' ||str.charAt(tempI) == '\u2075' ||str.charAt(tempI) == '\u2076' ||str.charAt(tempI) == '\u2077' ||str.charAt(tempI) == '\u2078' ||str.charAt(tempI) == '\u2079'){
-                                constructEXP =  constructEXP + str.charAt(tempI);
+                            if ((str.charAt(tempI) >= '0' && str.charAt(tempI) <= '9')  || (str.charAt(tempI) == '-' && tempI==i+1) || str.charAt(tempI) == '\u2070' ||str.charAt(tempI) == '\u00B9' ||str.charAt(tempI) == '\u00B2' ||str.charAt(tempI) == '\u00B3' ||str.charAt(tempI) == '\u2074' ||str.charAt(tempI) == '\u2075' ||str.charAt(tempI) == '\u2076' ||str.charAt(tempI) == '\u2077' ||str.charAt(tempI) == '\u2078' ||str.charAt(tempI) == '\u2079'){
+                                if(str.charAt(tempI) != '-') {
+                                    constructEXP = constructEXP + str.charAt(tempI);
+                                }
                                 endI = endI +1;
                             } else {
                                 tempI = str.length();
@@ -405,7 +407,12 @@ public class MainActivity extends AppCompatActivity{
                         while (!(startI == -1)&&((str.charAt(startI) >= '0' && str.charAt(startI) <= '9') || str.charAt(startI) == '.' || str.charAt(startI) == '\u2070' ||str.charAt(startI) == '\u00B9' ||str.charAt(startI) == '\u00B2' ||str.charAt(startI) == '\u00B3' ||str.charAt(startI) == '\u2074' ||str.charAt(startI) == '\u2075' ||str.charAt(startI) == '\u2076' ||str.charAt(startI) == '\u2077' ||str.charAt(startI) == '\u2078' ||str.charAt(startI) == '\u2079')){
                             startI = startI - 1;
                         }
-                        str = str.substring(0,startI+1)+"("+str.substring(startI+1,i)+"*1"+zeros+")"+str.substring(endI);
+                        if (str.charAt(i+1) != '-') {
+                            str = str.substring(0, startI + 1) + "(" + str.substring(startI + 1, i) + "*1" + zeros + ")" + str.substring(endI);
+                        }else{
+                            zeros = zeros.substring(0, zeros.length() - 1);
+                            str = str.substring(0, startI + 1) + "(" + str.substring(startI + 1, i) + "*0." + zeros + "1)" + str.substring(endI);
+                        }
                     }
                     //add a check for percentage and E
                 }
